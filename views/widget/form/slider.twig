@@ -1,0 +1,7 @@
+<div class="slider_wrapper ">
+    <div id="camera_wrap" class="">
+        {% for item in slider %}
+            {% include 'part/slider/item.twig' with {'item': item } %}
+        {% endfor %}
+    </div>
+</div>

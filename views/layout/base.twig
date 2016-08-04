@@ -1,0 +1,35 @@
+{% block html_head_container %}
+
+{% include 'layout/html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+<body class="page1" id="top">
+<!--==============================header=================================-->
+{% block header %}
+	{% include 'part/head/index.twig' %}
+{% endblock %}
+
+
+<!--=====================Content======================-->
+<div class="content">
+	<div class="container">
+		<div class="row">
+			{% block content %}
+				Empty
+			{% endblock %}
+		</div>
+	</div>
+</div>
+<!--==============================footer=================================-->
+{% block footer %}
+ 	{% include 'part/footer/index.twig' %}
+{% endblock %}
+{{ function('wp_footer') }}
+{% block footer_css_js %}
+
+{% endblock %}
+</body>
+</html>
