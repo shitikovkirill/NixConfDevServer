@@ -3,3 +3,4 @@
 /logs
 composer.lock
 /site
+.idea
