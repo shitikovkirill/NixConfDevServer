@@ -76,25 +76,58 @@ class SocialIcon extends WP_Widget {
 
 		$this->cmb2_fields = array(
 			array(
-				'name'   => 'Facebook',
 				'id_key' => 'facebook',
 				'id'     => 'facebook',
 				'description' => esc_html__( 'Facebook url', 'cold-storage' ),
-				'type'   => 'text',
+				'type'   => 'text_url',
 			),
 			array(
-				'name'   => 'Twitter',
 				'id_key' => 'twitter',
 				'id'     => 'twitter',
 				'description' => esc_html__( 'Twitter url', 'cold-storage' ),
-				'type'   => 'text',
+				'type'   => 'text_url',
 			),
 			array(
-				'name'   => 'RSS',
+				'id_key' => 'pinterest',
+				'id'     => 'pinterest',
+				'description' => esc_html__( 'Pinterest url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
+				'id_key' => 'instagram',
+				'id'     => 'instagram',
+				'description' => esc_html__( 'Instagram url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
+				'id_key' => 'google',
+				'id'     => 'google',
+				'description' => esc_html__( 'Google url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
+				'id_key' => 'skype',
+				'id'     => 'skype',
+				'description' => esc_html__( 'Skype url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
+				'id_key' => 'vimeo',
+				'id'     => 'vimeo',
+				'description' => esc_html__( 'Vimeo url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
+				'id_key' => 'youtube',
+				'id'     => 'youtube',
+				'description' => esc_html__( 'Youtube url', 'cold-storage' ),
+				'type'   => 'text_url',
+			),
+			array(
 				'id_key' => 'rss',
 				'id'     => 'rss',
-				'description' => esc_html__( 'Facebook url', 'cold-storage' ),
-				'type'   => 'text',
+				'description' => esc_html__( 'Rss url', 'cold-storage' ),
+				'type'   => 'text_url',
 			),
 		);
 
@@ -122,10 +155,8 @@ class SocialIcon extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		echo self::get_widget( array(
-			'args'     => $args,
-			'instance' => $instance,
-			'cache_id' => $this->id, // whatever the widget id is
+		echo self::get_widget( array_merge(
+			$args, $instance, [$this->id] // whatever the widget id is
 		) );
 
 	}

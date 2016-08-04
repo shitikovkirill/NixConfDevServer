@@ -1,0 +1,14 @@
+<div class="post">
+    <time datetime="{{ post.published_at }}">{{ post.published_at|date("d") }}<span>{{ post.published_at|date("M") }}</span></time>
+    <div class="extra_wrapper">
+        <div class="text1 col1"><a href="{{post.link}}">{{ post.post_title }} </a></div>by
+        <a href="{{post.author.path}}">{{ post.author.name }}</a>
+    </div>
+    <div class="clear"></div>
+    <img src="{{post.get_thumbnail.src|resize(370, 252)}}" alt="" class="img_inner fl1 fleft">
+    <div class="extra_wrapper">
+        {{ post.post_content }}
+        <br>
+        <a href="{{post.link}}" class="btn">Read more</a>
+    </div>
+</div>

@@ -39,7 +39,7 @@ class ColdStorageController extends Controller
             'after_title' => '',
         ) );
         register_sidebar( array(
-            'name' => 'Home: Top sidebar',
+            'name' => 'Top sidebar',
             'id' => 'home_top',
             'before_widget' => '
                 <div class="grid_4">
@@ -52,6 +52,16 @@ class ColdStorageController extends Controller
             'before_title' => '',
             'after_title' => '',
         ) );
+        register_sidebar( array(
+            'name' => 'Navigation sidebar',
+            'id' => 'navigation_sidebar',
+            'before_widget' => '<ul class="list">',
+            'after_widget' => '</ul><div class="hor hr2"></div>',
+            'before_title' => '<h3>',
+            'after_title' => '</h3>',
+        ) );
+
+
     }
 
     public function addMenu(){
@@ -141,6 +151,7 @@ class ColdStorageController extends Controller
         $context['theme_url'] = get_template_directory_uri();
         $context['option']['head'] = get_option('head_options');
         $context['home_icon'] 	= \Timber::get_widgets('home_icon');
+        $context['navigation_sidebar'] 	= \Timber::get_widgets('navigation_sidebar');
         $context['site'] = $this;
         return $context;
     }

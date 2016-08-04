@@ -20,14 +20,20 @@
     </script>
 {% endblock %}
 
-{% block top %}
+{% block header %}
+    {{ parent() }}
+    {% include 'part/slider/index.twig' %}
 {% endblock %}
 
 {% block content %}
     <div class="grid_8">
-        <h3>Recent News</h3>
-    {% for post in posts %}
-        {% include 'page/blog/main.twig' with { 'post': post } %}
-    {% endfor %}
+        <h3>{{post.post_title}}</h3>
+        <div class="text1">
+            {{post.content}}
+        </div>
     </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'page/home/sidebar.twig' %}
 {% endblock %}

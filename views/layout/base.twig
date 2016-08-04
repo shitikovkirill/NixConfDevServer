@@ -17,8 +17,21 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
+			{% block top %}
+				{{ home_top }}
+				<div class="clear"></div>
+			{%  endblock %}
+
 			{% block content %}
 				Empty
+			{% endblock %}
+
+			{% block sidebar %}
+				{% if navigation_sidebar %}
+					<div class="grid_4">
+						{{ navigation_sidebar }}
+					</div>
+				{% endif %}
 			{% endblock %}
 		</div>
 	</div>

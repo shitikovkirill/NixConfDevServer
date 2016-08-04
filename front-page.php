@@ -14,15 +14,15 @@
  */
 
 if ( ! class_exists( 'Timber' ) ) {
-	echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
-	return;
+    echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
+    return;
 }
 
 $context = Timber::get_context();
-$context['posts'] = Timber::get_posts();
+$context['post'] = new TimberPost();
 $context['home_slider'] = Timber::get_widgets('home_slider');
 $context['home_top'] 	= Timber::get_widgets('home_top');
 $context['home_right'] 	= Timber::get_widgets('home_left');
 
-$templates = array( 'index.twig' );
+$templates = array( 'home.twig' );
 Timber::render( $templates, $context );
