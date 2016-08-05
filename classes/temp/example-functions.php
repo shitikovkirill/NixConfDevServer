@@ -568,7 +568,7 @@ function yourprefix_register_taxonomy_metabox() {
 		'id'               => $prefix . 'edit',
 		'title'            => __( 'Category Metabox', 'cmb2' ), // Doesn't output for term boxes
 		'object_types'     => array( 'term' ), // Tells CMB2 to use term_meta vs post_meta
-		'taxonomies'       => array( 'category', 'post_tag' ), // Tells CMB2 which taxonomies should have these fields
+		'taxonomies'       => array( 'page', 'post' ), // Tells CMB2 which taxonomies should have these fields
 		// 'new_term_section' => true, // Will display in the "Add New Category" section
 	) );
 

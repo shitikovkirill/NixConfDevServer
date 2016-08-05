@@ -1,0 +1,30 @@
+{% extends "layout/base.twig" %}
+
+{% block top %}
+    <div class="grid_12">
+        <h3>Services Overview</h3>
+    </div>
+    {% for service in services %}
+        {% include 'page/services/service.twig' with{"service": service} %}
+    {% endfor %}
+    <div class="clear"></div>
+{%  endblock %}
+
+{% block content %}
+    <div class="grid_8">
+        <h3>{{post.post_title}}</h3>
+        <div>
+            {{post.content}}
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+        <div class="grid_4">
+            <h3>Services List</h3>
+            <ul class="list1">
+                {% include 'part/menu/service.twig'
+                with { 'menu': menu.services.get_items, 'class':'sf-menu' } %}
+            </ul>
+        </div>
+{% endblock %}

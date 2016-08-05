@@ -1,0 +1,22 @@
+{% if persons.0.text %}
+<div class="grid_12">
+    <div class="hor hr2"></div>
+    <h3>Meet Our Staff</h3>
+</div>
+
+{%  for person in persons %}
+    {% include 'page/about/persone.twig' with {'person': person } %}
+{% endfor %}
+<div class="clear"></div>
+{% endif %}
+
+{% if testimonials.0.text %}
+<div class="grid_12">
+    <div class="hor hr2"></div>
+    <h3>Testimonials</h3>
+
+</div>
+    {% for testimonial in testimonials %}
+        {%  include 'page/about/testimonials.twig' with {'testimonial': testimonial} %}
+    {% endfor %}
+{% endif %}

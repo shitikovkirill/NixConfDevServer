@@ -9,7 +9,11 @@ require_once __DIR__.'/../classes/TopWidget.php';
 require_once __DIR__.'/../classes/SidebarWidget.php';
 require_once __DIR__.'/../classes/admin/head.php';
 require_once __DIR__.'/../classes/admin/slider.php';
+require_once __DIR__.'/../classes/admin/about.php';
 require_once __DIR__.'/../classes/widget/social-icon.php';
+require_once __DIR__.'/../classes/widget/services.php';
+require_once __DIR__.'/../classes/widget/about.php';
+require_once __DIR__.'/../classes/admin/servces.php';
 /**
  * Main class.
  * Registers HOOKS used within the plugin.

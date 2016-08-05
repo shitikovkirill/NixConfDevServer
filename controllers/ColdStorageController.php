@@ -15,7 +15,7 @@ class ColdStorageController extends Controller
 {
     public function addSidebar(){
         register_sidebar( array(
-            'name' => 'Home: place for slider',
+            'name' => 'Home: Slider',
             'id' => 'home_slider',
             'before_widget' => '',
             'after_widget' => '',
@@ -31,7 +31,7 @@ class ColdStorageController extends Controller
             'after_title' => '',
         ) );
         register_sidebar( array(
-            'name' => 'Home: Social icon',
+            'name' => 'All: Social icon',
             'id' => 'home_icon',
             'before_widget' => '<div class="socials">',
             'after_widget' => '</div>',
@@ -39,7 +39,7 @@ class ColdStorageController extends Controller
             'after_title' => '',
         ) );
         register_sidebar( array(
-            'name' => 'Top sidebar',
+            'name' => 'Home: Top',
             'id' => 'home_top',
             'before_widget' => '
                 <div class="grid_4">
@@ -53,7 +53,7 @@ class ColdStorageController extends Controller
             'after_title' => '',
         ) );
         register_sidebar( array(
-            'name' => 'Navigation sidebar',
+            'name' => 'All: Right sidebar',
             'id' => 'navigation_sidebar',
             'before_widget' => '<ul class="list">',
             'after_widget' => '</ul><div class="hor hr2"></div>',
@@ -72,7 +72,7 @@ class ColdStorageController extends Controller
 
     public function addMenu(){
         register_nav_menu( 'primary', 'Primary Menu' );
-        register_nav_menu( 'footer', 'Footer' );
+        register_nav_menu( 'services', 'Services' );
     }
     
     public function addCss(){
@@ -85,55 +85,53 @@ class ColdStorageController extends Controller
     }
     
     public function addJs(){
-        if (!is_admin()) {
-            wp_deregister_script('jquery');
-            wp_enqueue_script(
-                'jquery',
-                get_template_directory_uri().'/js/jquery.js'
-            );
-            wp_deregister_script('jquery-migrate');
-            wp_enqueue_script(
-                'jquery-migrate',
-                get_template_directory_uri().'/js/jquery-migrate-1.1.1.js',
-                ['jquery'],
-                "1.1.1"
-            );
-        }
+        wp_deregister_script('jquery');
+        wp_enqueue_script(
+            'jquery',
+            get_template_directory_uri().'/js/jquery.js'
+        );
+        wp_deregister_script('jquery-migrate');
+        wp_enqueue_script(
+            'jquery-migrate',
+            get_template_directory_uri().'/js/jquery-migrate-1.1.1.js',
+            ['jquery'],
+            "1.1.1"
+        );
         wp_enqueue_script(
             'script',
             get_template_directory_uri().'/js/script.js',
-            ['jquery',]
+            ['jquery']
         );
         wp_enqueue_script(
             'superfish',
             get_template_directory_uri().'/js/superfish.js',
-            ['jquery','script']
+            ['jquery']
         );
         wp_enqueue_script(
             'jquery.equalheights',
             get_template_directory_uri().'/js/jquery.equalheights.js',
-            ['jquery','superfish']
+            ['jquery']
         );
         wp_enqueue_script(
             'jquery.mobilemenu',
             get_template_directory_uri().'/js/jquery.mobilemenu.js',
-            ['jquery','jquery.equalheights']
+            ['jquery']
         );
         wp_enqueue_script(
             'jquery.equalheights',
             get_template_directory_uri().'/js/jquery.easing.1.3.js',
-            ['jquery','jquery.mobilemenu'],
+            ['jquery'],
             '1.3'
         );
         wp_enqueue_script(
             'tmStickUp',
             get_template_directory_uri().'/js/tmStickUp.js',
-            ['jquery.equalheights']
+            ['jquery']
         );
         wp_enqueue_script(
             'jquery.ui.totop',
             get_template_directory_uri().'/js/jquery.ui.totop.js',
-            ['jquery','tmStickUp']
+            ['jquery']
         );
         wp_enqueue_script(
             'camera',
@@ -155,8 +153,7 @@ class ColdStorageController extends Controller
     }
     
     public function context($context){
-        $context['menu']['main'] = new \TimberMenu('primary');
-        $context['menu']['footer_menu'] = new \TimberMenu('footer');
+        $context['menu']['footer_menu'] = $context['menu']['main'] = new \TimberMenu('primary');
         $context['theme_url'] = get_template_directory_uri();
         $context['option']['head'] = get_option('head_options');
         $context['home_icon'] 	= \Timber::get_widgets('home_icon');

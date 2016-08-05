@@ -7,7 +7,7 @@
     <div class="clear"></div>
     <img src="{{post.get_thumbnail.src|resize(370, 252)}}" alt="" class="img_inner fl1 fleft">
     <div class="extra_wrapper">
-        {{ post.post_content }}
+        {{post.get_preview(100,false,'')}}
         <br>
         <a href="{{post.link}}" class="btn">Read more</a>
     </div>
