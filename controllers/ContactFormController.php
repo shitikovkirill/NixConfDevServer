@@ -26,8 +26,9 @@ class ContactFormController extends Controller
                 'url' => admin_url('admin-ajax.php')
             )
         );
-        $this->view->show('page.contacts.form');
+        return $this->view->get('page.contacts.form');
     }
+    
     public function sendMail(){
         
         $blog_name = get_option('blogname');
@@ -38,7 +39,7 @@ class ContactFormController extends Controller
         $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
         $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
 
-        $html = $this->view->get('page.contacts.letter', [
+        $html = $this->view->get('page.contacts.email', [
             'blog_name'=>$blog_name,
             'url' => $url,
             'email'=>$email,
@@ -50,7 +51,7 @@ class ContactFormController extends Controller
         $headers = array('Content-Type: text/html; charset=UTF-8');
         
         $res = wp_mail($admin_email, 'Email from '.$name.'.', $html, $headers);
-        $logger = new Logger('mail_log');
+        $logger = new Logger(__DIR__.'/../logs');
         $logger -> info('Send mail:',[$blog_name, $url, $admin_email, $email, $name, $message, $phone, 'result'=>$res]);
         $this->view->show('page.contacts.letter');
         die;
