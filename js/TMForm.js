@@ -11,7 +11,8 @@
 					,invalidClass:'invalid'
 					,successClass:'success'
 					,onceVerifiedClass:'once-verified'
-					,mailHandlerURL:'bat/MailHandler.php'					
+					,mailHandlerURL: myajax.url
+					,action: 'send_mail'
 					,successShowDelay:'4000'
 					,stripHTML:true
 				},opt)
@@ -126,6 +127,7 @@
 							,message:getValue($('label.message textarea'))
 							,owner_email:opt.ownerEmail||'#'
 							,stripHTML:opt.stripHTML
+							,action:opt.action
 						}
 						,success: function(e){							
 							form.addClass(opt.successClass)
