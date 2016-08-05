@@ -27,6 +27,7 @@ class Main extends Theme
 	
 	public function init()
 	{
+		remove_action( 'wp_default_scripts', 'wp_default_scripts');
 		$this->setTheme();
 		$this->add_filter('get_twig', 'TwigController@add_to_twig');
 		

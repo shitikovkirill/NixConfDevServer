@@ -41,6 +41,7 @@ class TopWidget extends \WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php esc_html_e( 'Icon:' , 'cold-storage'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>" type="text" value="<?php echo esc_attr( $icon ); ?>" />
+            <p><a href="http://fontawesome.io/icons/">Base of icon</a></p>
         </p>
         <p>
             <label for="<?php echo $this->get_field_id( 'description' ); ?>"><?php esc_html_e( 'Description:' , 'cold-storage'); ?></label>

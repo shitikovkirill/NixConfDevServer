@@ -72,6 +72,7 @@ class ColdStorageController extends Controller
 
     public function addMenu(){
         register_nav_menu( 'primary', 'Primary Menu' );
+        register_nav_menu( 'footer', 'Footer' );
         register_nav_menu( 'services', 'Services' );
     }
     
@@ -153,7 +154,8 @@ class ColdStorageController extends Controller
     }
     
     public function context($context){
-        $context['menu']['footer_menu'] = $context['menu']['main'] = new \TimberMenu('primary');
+        $context['menu']['main'] = new \TimberMenu('primary');
+        $context['menu']['footer_menu'] = new \TimberMenu('footer');
         $context['theme_url'] = get_template_directory_uri();
         $context['option']['head'] = get_option('head_options');
         $context['home_icon'] 	= \Timber::get_widgets('home_icon');
