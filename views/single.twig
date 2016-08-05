@@ -1,0 +1,16 @@
+{% extends "layout/base.twig" %}
+
+{% block top %}
+{% endblock %}
+
+{% block content %}
+	<div class="grid_8">
+		<h3>{{ post.title }}</h3>
+		{% if post.get_thumbnail %}
+			<img src="{{post.thumbnail.src}}" alt="" class="img_inner fl1 fleft">
+		{% endif %}
+
+		{{ post.content }}
+
+	</div>
+{% endblock %}

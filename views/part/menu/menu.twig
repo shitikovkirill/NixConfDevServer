@@ -1,6 +1,12 @@
 <ul class="{{ class }}">
     {% for item in menu %}
-        <li class="{{item.classes | join(' ')}}">
+        <li class="{{item.classes | join(' ')}}
+        {% for class in item.classes %}
+            {% if(class == 'current-menu-item' or class == 'current_page_parent') %}
+                current
+            {% endif %}
+		{% endfor %}
+        ">
             <a href="{{item.get_link}}">{{item.title}}</a>
             {% if item.get_children %}
                 {% include "part/menu/menu.twig" with {'menu': item.get_children} %}

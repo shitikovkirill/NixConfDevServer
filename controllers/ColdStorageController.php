@@ -60,8 +60,14 @@ class ColdStorageController extends Controller
             'before_title' => '<h3>',
             'after_title' => '</h3>',
         ) );
-
-
+        register_sidebar( array(
+            'name' => 'About: Right sidebar',
+            'id' => 'about_sidebar',
+            'before_widget' => '<ul class="list">',
+            'after_widget' => '</ul><div class="hor hr2"></div>',
+            'before_title' => '<h3>',
+            'after_title' => '</h3>',
+        ) );
     }
 
     public function addMenu(){
@@ -79,52 +85,55 @@ class ColdStorageController extends Controller
     }
     
     public function addJs(){
-        wp_deregister_script('jquery');
-        wp_enqueue_script(
-            'jquery',
-            get_template_directory_uri().'/js/jquery.js'
-        );
-        wp_enqueue_script(
-            'jquery-migrate',
-            get_template_directory_uri().'/js/jquery-migrate-1.1.1.js',
-            ['jquery'],
-            "1.1.1"
-        );
+        if (!is_admin()) {
+            wp_deregister_script('jquery');
+            wp_enqueue_script(
+                'jquery',
+                get_template_directory_uri().'/js/jquery.js'
+            );
+            wp_deregister_script('jquery-migrate');
+            wp_enqueue_script(
+                'jquery-migrate',
+                get_template_directory_uri().'/js/jquery-migrate-1.1.1.js',
+                ['jquery'],
+                "1.1.1"
+            );
+        }
         wp_enqueue_script(
             'script',
             get_template_directory_uri().'/js/script.js',
-            ['jquery']
+            ['jquery',]
         );
         wp_enqueue_script(
             'superfish',
             get_template_directory_uri().'/js/superfish.js',
-            ['jquery']
+            ['jquery','script']
         );
         wp_enqueue_script(
             'jquery.equalheights',
             get_template_directory_uri().'/js/jquery.equalheights.js',
-            ['jquery']
+            ['jquery','superfish']
         );
         wp_enqueue_script(
             'jquery.mobilemenu',
             get_template_directory_uri().'/js/jquery.mobilemenu.js',
-            ['jquery']
+            ['jquery','jquery.equalheights']
         );
         wp_enqueue_script(
             'jquery.equalheights',
             get_template_directory_uri().'/js/jquery.easing.1.3.js',
-            ['jquery'],
+            ['jquery','jquery.mobilemenu'],
             '1.3'
         );
         wp_enqueue_script(
             'tmStickUp',
             get_template_directory_uri().'/js/tmStickUp.js',
-            ['jquery']
+            ['jquery.equalheights']
         );
         wp_enqueue_script(
             'jquery.ui.totop',
             get_template_directory_uri().'/js/jquery.ui.totop.js',
-            ['jquery']
+            ['jquery','tmStickUp']
         );
         wp_enqueue_script(
             'camera',
