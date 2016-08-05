@@ -8,6 +8,9 @@
         {% include 'page/services/service.twig' with{"service": service} %}
     {% endfor %}
     <div class="clear"></div>
+    <div class="grid_12">
+        <div class="hor hr2"></div>
+    </div>
 {%  endblock %}
 
 {% block content %}
@@ -22,9 +25,9 @@
 {% block sidebar %}
         <div class="grid_4">
             <h3>Services List</h3>
-            <ul class="list1">
+
                 {% include 'part/menu/service.twig'
                 with { 'menu': menu.services.get_items, 'class':'sf-menu' } %}
-            </ul>
+
         </div>
 {% endblock %}
