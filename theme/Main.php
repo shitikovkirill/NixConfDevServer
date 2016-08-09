@@ -40,6 +40,9 @@ class Main extends Theme
 		$this->add_shortcode('cold_form', 'ContactFormController@showForm');
 		$this->add_action('wp_ajax_send_mail', 'ContactFormController@sendMail');
 
+		$this->add_filter('script_loader_src','ColdStorageController@dellVersion',15, 1);
+		$this->add_filter('style_loader_src','ColdStorageController@dellVersion',15, 1);
+
 		$this->addWidget();
 
 

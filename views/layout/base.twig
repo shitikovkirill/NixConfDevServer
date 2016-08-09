@@ -2,6 +2,12 @@
 
 {% include 'layout/html-header.twig' %}
 	{% block head %}
+		<script>
+			$(document).ready(function(){
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				$('#stuck_container').tmStickUp({});
+			});
+		</script>
 	{% endblock %}
 	</head>
 {% endblock %}

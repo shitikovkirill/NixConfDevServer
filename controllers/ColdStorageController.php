@@ -99,6 +99,11 @@ class ColdStorageController extends Controller
             "1.1.1"
         );
         wp_enqueue_script(
+            'easing',
+            get_template_directory_uri().'/js/jquery.easing.1.3.js',
+            ['jquery']
+        );
+        wp_enqueue_script(
             'script',
             get_template_directory_uri().'/js/script.js',
             ['jquery']
@@ -151,6 +156,12 @@ class ColdStorageController extends Controller
         );
         wp_script_add_data('jquery.mobile.customized.min', 'conditional', '(gt IE 9)|!(IE)');
         wp_script_add_data('html5shiv','conditional', 'lt IE 9');
+    }
+
+    public function dellVersion($src){
+        $parts = explode( '?', $src );
+        $script =$parts[0];
+	    return $script;
     }
     
     public function context($context){
