@@ -147,6 +147,12 @@ class head_Admin {
 			// 'repeatable' => true,
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'Text in footer', 'cmb2' ),
+			'id'   => 'footer_text',
+			'type' => 'textarea_code',
+			/*'repeatable' => true,*/
+		) );
 	}
 
 	/**

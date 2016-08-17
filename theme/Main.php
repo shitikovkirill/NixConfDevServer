@@ -4,16 +4,6 @@ namespace Cold;
 
 use Amostajo\WPPluginCore\Plugin as Theme;
 
-require_once __DIR__.'/../classes/SliderWidget.php';
-require_once __DIR__.'/../classes/TopWidget.php';
-require_once __DIR__.'/../classes/SidebarWidget.php';
-require_once __DIR__.'/../classes/admin/head.php';
-require_once __DIR__.'/../classes/admin/slider.php';
-require_once __DIR__.'/../classes/admin/about.php';
-require_once __DIR__.'/../classes/widget/social-icon.php';
-require_once __DIR__.'/../classes/widget/services.php';
-require_once __DIR__.'/../classes/widget/about.php';
-require_once __DIR__.'/../classes/admin/servces.php';
 /**
  * Main class.
  * Registers HOOKS used within the plugin.
@@ -54,10 +44,18 @@ class Main extends Theme
 	
 	public function on_admin()
 	{
-		
+		$this->addPage();
 	}
 
 	private function addWidget(){
+		require_once __DIR__.'/../classes/SliderWidget.php';
+		require_once __DIR__.'/../classes/TopWidget.php';
+		require_once __DIR__.'/../classes/SidebarWidget.php';
+		require_once __DIR__.'/../classes/widget/social-icon.php';
+		require_once __DIR__.'/../classes/widget/services.php';
+		require_once __DIR__.'/../classes/widget/about.php';
+		require_once __DIR__.'/../classes/widget/form7.php';
+		
 		$this->add_widget('Cold\Classes\SliderWidget');
 		$this->add_widget('Cold\Classes\TopWidget');
 		$this->add_widget('Cold\Classes\SidebarWidget');
@@ -68,5 +66,12 @@ class Main extends Theme
 		add_theme_support( 'post-formats' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
+	}
+
+	private function addPage(){
+		require_once __DIR__.'/../classes/admin/head.php';
+		require_once __DIR__.'/../classes/admin/slider.php';
+		require_once __DIR__.'/../classes/admin/about.php';
+		require_once __DIR__.'/../classes/admin/servces.php';
 	}
 }
