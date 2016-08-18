@@ -12,3 +12,8 @@
 {% block sidebar %}
 
 {% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ theme_url }}/css/form.css">
+{% endblock %}

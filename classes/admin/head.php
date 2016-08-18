@@ -130,9 +130,9 @@ class head_Admin {
 		 */
 		$cmb->add_field( array(
 			'name' => __( 'Logo', 'cmb2' ),
-			'desc' => __( 'Upload an image or enter a URL.', 'cmb2' ),
+			'desc' => __( 'Text or HTML', 'cmb2' ),
 			'id'   => 'logo',
-			'type' => 'file',
+			'type' => 'textarea_code',
 		) );
 		$cmb->add_field( array(
 			'name' => __( 'Text near phone', 'cmb2' ),

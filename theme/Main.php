@@ -34,7 +34,7 @@ class Main extends Theme
 		$this->add_filter('style_loader_src','ColdStorageController@dellVersion',15, 1);
 
 		$this->addWidget();
-
+		$this->addPage();
 
 		/*$this->add_action('admin_menu', 'MenuController@addMenuPage');*/
 		/*$this->add_action('cmb2_admin_init', 'MetaboxController@slider');
@@ -44,7 +44,7 @@ class Main extends Theme
 	
 	public function on_admin()
 	{
-		$this->addPage();
+		
 	}
 
 	private function addWidget(){
