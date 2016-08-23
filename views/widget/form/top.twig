@@ -1,8 +1,9 @@
 {{ args.before_widget }}
-<div class="fa col1 {{ icon }}"></div>
+{% if icon %}
+    <div class="fa col1 {{ icon }}"></div>
+{% endif %}
 <div class=" title col1">
-    {{ title }}
+    <a href="{{ link }}">{{ title }}</a>
 </div> <div class="clear"></div>
 {{ description }}
-<a href="{{ link }}" class="fa fa-caret-right"></a>
 {{ args.after_widget }}

@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid_8">
+    <div class="grid_8 content">
         <h3>Recent News</h3>
     {% for post in posts %}
         {% include 'page/blog/main.twig' with { 'post': post } %}

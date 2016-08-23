@@ -356,6 +356,37 @@ a.fa-caret-right:hover {
     margin-bottom: 13px;
 }
 
+input[type=submit] {
+	background-color: rgb(141,22,22);
+    color: white;
+}
+
+.content {
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 25px;
+    margin-bottom: 13px;
+}
+
+.content ul  {
+    list-style: initial;
+    margin: initial;
+    padding: 0 0 0 40px;
+}
+
+.content li
+{
+    display: list-item;
+}	
+
+.content li:before {
+  content: "*";
+  display: inline;
+  float: left;
+  margin-left: -18px;
+}
+
+
 .page1 .text1 {
     margin-bottom: 14px;
 }
@@ -923,6 +954,9 @@ header .grid_12 {
     width: 188px;
 }
 
+div#logo h3:hover{
+ text-shadow: 2px 2px 5px red;
+}
 
 #logo > h3.first {
     color: white;
