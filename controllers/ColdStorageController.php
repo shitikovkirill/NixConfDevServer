@@ -154,6 +154,18 @@ class ColdStorageController extends Controller
             get_template_directory_uri().'/js/html5shiv.js',
             ['jquery']
         );
+
+        wp_enqueue_script(
+            'film_roll',
+            get_template_directory_uri().'/js/carusel/jquery.film_roll.min.js',
+            ['jquery']
+        );
+        wp_enqueue_script(
+            'touchSwipe',
+            get_template_directory_uri().'/js/carusel/jquery.touchSwipe.min.js',
+            ['jquery']
+        );
+
         wp_script_add_data('jquery.mobile.customized.min', 'conditional', '(gt IE 9)|!(IE)');
         wp_script_add_data('html5shiv','conditional', 'lt IE 9');
     }

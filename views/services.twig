@@ -6,15 +6,30 @@
         <div class="grid_12">
             <h3>Services Overview</h3>
         </div>
-        {% for service in services %}
-            {% include 'page/services/service.twig' with{"service": service} %}
-        {% endfor %}
+        <div id="film_roll">
+            {% for service in services %}
+                {% include 'page/services/service.twig' with{"service": service} %}
+            {% endfor %}
+        </div>
         <div class="clear"></div>
         <div class="grid_12">
             <div class="hor hr2"></div>
         </div>
     {% endif %}
 {%  endblock %}
+
+{% block footer_css_js %}
+    {% if services|length > 3 %}
+        <script>
+            jQuery(window).load(function() {
+                var film_roll = new FilmRoll({
+                    configure_load: true,
+                    container: '#film_roll',
+                });
+            });
+        </script>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     <div class="grid_8 content">
