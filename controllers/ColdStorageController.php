@@ -157,12 +157,12 @@ class ColdStorageController extends Controller
 
         wp_enqueue_script(
             'film_roll',
-            get_template_directory_uri().'/js/carusel/jquery.film_roll.min.js',
+            get_template_directory_uri().'/js/carousel/jquery.film_roll.min.js',
             ['jquery']
         );
         wp_enqueue_script(
             'touchSwipe',
-            get_template_directory_uri().'/js/carusel/jquery.touchSwipe.min.js',
+            get_template_directory_uri().'/js/carousel/jquery.touchSwipe.min.js',
             ['jquery']
         );
 
