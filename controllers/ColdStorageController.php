@@ -183,7 +183,7 @@ class ColdStorageController extends Controller
         $context['option']['head'] = get_option('head_options');
         $context['home_icon'] 	= \Timber::get_widgets('home_icon');
         $context['navigation_sidebar'] 	= \Timber::get_widgets('navigation_sidebar');
-        $context['site'] = $this;
+        $context['site'] = new \TimberSite();
         return $context;
     }
 }

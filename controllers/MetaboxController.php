@@ -68,49 +68,85 @@ class MetaboxController
         ) );
     }
 
-    public function head(){
-        $option_key = 'cold-storage';
-
-        /**
-         * Metabox for an options page. Will not be added automatically, but needs to be called with
-         * the `cmb2_metabox_form` helper function. See wiki for more info.
-         */
-        $cmb_options = new_cmb2_box( array(
-            'id'      => $option_key,
-            'title'   => __( 'Theme Options Metabox', 'cmb2' ),
-            'hookup'  => false, // Do not need the normal user/post hookup
-            'show_on' => array(
+    public function about_field(){
+        $cmb = new_cmb2_box( array(
+            'id'         => 'about_personal',
+            'title'        => 'About Metabox',
+            'object_types' => array( 'page' ), // post type
+            'context'      => 'normal', //  'normal', 'advanced', or 'side'
+            'priority'     => 'high',  //  'high', 'core', 'default' or 'low'
+            'show_names'   => true, // Show field names on the left
+            'show_on'    => array(
                 // These are important, don't remove
-                'key'   => 'options-page',
-                'value' => array( $option_key )
+                'key'   => 'template',
+                'value' => 'about'
             ),
         ) );
 
-        /**
-         * Options fields ids only need
-         * to be unique within this option group.
-         * Prefix is not needed.
-         */
-        $cmb_options->add_field( array(
-            'name' => __( 'Logo', 'cmb2' ),
-            'desc' => __( 'Upload an image or enter a URL.', 'cmb2' ),
-            'id'   => 'logo',
+        $group_field_id = $cmb->add_field( array(
+            'id'          => 'about_person',
+            'type'        => 'group',
+            'name'=>'Person',
+            'options'     => array(
+                'group_title'   => __( 'Entry {#}', 'cmb2' ), // {#} gets replaced by row number
+                'add_button'    => __( 'Add Another Entry', 'cmb2' ),
+                'remove_button' => __( 'Remove Entry', 'cmb2' ),
+                'sortable'      => true, // beta
+                // 'closed'     => true, // true to have the groups closed by default
+            ),
+        ) );
+
+        // Set our CMB2 fields
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => __( 'Foto', 'cmb2' ),
+            'id'   => 'image',
             'type' => 'file',
         ) );
-        $cmb_options->add_field( array(
-            'name' => __( 'Text near phone', 'cmb2' ),
-            'id'   => 'text_phone',
-            'type' => 'text_medium',
-            // 'repeatable' => true,
-        ) );
-        $cmb_options->add_field( array(
-            'name' => __( 'Phone number', 'cmb2' ),
-            'id'   => 'phone',
-            'type' => 'text_medium',
-            // 'repeatable' => true,
+
+        $cmb->add_group_field($group_field_id, array(
+            'name' => __( 'Name', 'about' ),
+            'id'   => 'text',
+            'type' => 'text',
         ) );
 
+        $cmb->add_group_field($group_field_id,array(
+            'id'     => 'link',
+            'description' => esc_html__( 'Link', 'cold-storage' ),
+            'type'   => 'text_url',
+        ));
 
+        $cmb->add_group_field( $group_field_id, array(
+            'name'        => __( 'Text', 'cmb2' ),
+            'id'          => 'description',
+            'type'        => 'textarea',
+        ) );
+
+        $group_field_id_2 = $cmb->add_field( array(
+            'id'          => 'about_testimonials',
+            'type'        => 'group',
+            'name' 		  => 'Testimonials',
+            'options'     => array(
+                'group_title'   => __( 'Entry {#}', 'cmb2' ), // {#} gets replaced by row number
+                'add_button'    => __( 'Add Another Entry', 'cmb2' ),
+                'remove_button' => __( 'Remove Entry', 'cmb2' ),
+                'sortable'      => true, // beta
+                // 'closed'     => true, // true to have the groups closed by default
+            ),
+        ) );
+
+        $cmb->add_group_field($group_field_id_2, array(
+            'name' => __( 'Name', 'about' ),
+            'id'   => 'text',
+            'type' => 'text',
+        ) );
+
+        $cmb->add_group_field( $group_field_id_2, array(
+            'name'        => __( 'Text', 'cmb2' ),
+            'id'          => 'description',
+            'type'        => 'textarea',
+            'before' => '"... ',
+            'after'  => ' ..."',
+        ) );
     }
 
     public function be_metabox_show_on_template( $display, $meta_box ) {

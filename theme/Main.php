@@ -37,14 +37,14 @@ class Main extends Theme
 		$this->addPage();
 
 		/*$this->add_action('admin_menu', 'MenuController@addMenuPage');*/
-		/*$this->add_action('cmb2_admin_init', 'MetaboxController@head');*/
 	}
 
 	
 	public function on_admin()
 	{
         $this->add_action('cmb2_admin_init', 'MetaboxController@services_slider');
-        $this->add_filter( 'cmb2_show_on', 'MetaboxController@be_metabox_show_on_template', 10, 2 );
+        $this->add_action('cmb2_admin_init', 'MetaboxController@about_field');
+        $this->add_filter('cmb2_show_on', 'MetaboxController@be_metabox_show_on_template', 10, 2 );
 	}
 
 	private function addWidget(){
@@ -71,7 +71,7 @@ class Main extends Theme
 	private function addPage(){
 		require_once __DIR__.'/../classes/admin/head.php';
 		require_once __DIR__.'/../classes/admin/slider.php';
-		require_once __DIR__.'/../classes/admin/about.php';
+		//require_once __DIR__.'/../classes/admin/about.php';
 		//require_once __DIR__.'/../classes/admin/servces.php';
 	}
 }
