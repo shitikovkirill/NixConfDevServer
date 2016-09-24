@@ -3,9 +3,9 @@
         <img src="{{ service.image|resize(370, 244) }}" alt="{{ service.text }}">
         <div class="box_bot">
             <div class="maxheight">
-                <div class="text1 col1"><a href="{{ service.link }}">{{ service.text }}</a></div>
+                <div class="text1 col1"><a href="{% if service.link %}{{ service.link }}{% else %}javascript:void(0);{% endif %}">{{ service.text }}</a></div>
                 {{ service.description }}
-                <a href="{{ service.link }}" class="fa fa-caret-right"></a>
+                <a href="{% if service.link %}{{ service.link }}{% else %}javascript:void(0);{% endif %}" class="fa fa-caret-right"></a>
             </div>
         </div>
     </div>

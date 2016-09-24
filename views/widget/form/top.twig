@@ -3,7 +3,7 @@
     <div class="fa col1 {{ icon }}"></div>
 {% endif %}
 <div class=" title col1">
-    <a href="{{ link }}">{{ title }}</a>
+    <a href="{% if link %}{{ link }}{% else %}javascript:void(0);{% endif %}">{{ title }}</a>
 </div> <div class="clear"></div>
 {{ description }}
 {{ args.after_widget }}

@@ -11,60 +11,60 @@ namespace Cold\Controllers;
 
 class MetaboxController
 {
-    public function slider(){
-        $option_page = 'slider_options';
-        /**
-         * Repeatable Field Groups
-         */
-        $cmb_group = new_cmb2_box( array(
-            'id'           => $option_page,
-            'title'        => __( 'Repeating Field Group', 'cmb2' ),
-            'hookup'  => false, // Do not need the normal user/post hookup
-            'show_on' => array(
+    public function services_slider(){
+
+        $cmb = new_cmb2_box( array(
+            'id'         => 'services_slider',
+            'title'        => 'Services Metabox',
+            'object_types' => array( 'page' ), // post type
+            'context'      => 'normal', //  'normal', 'advanced', or 'side'
+            'priority'     => 'high',  //  'high', 'core', 'default' or 'low'
+            'show_names'   => true, // Show field names on the left
+            'show_on'    => array(
                 // These are important, don't remove
-                'key'   => 'options-page',
-                'value' => array( $option_page )
+                'key'   => 'template',
+                'value' => 'services'
             ),
         ) );
 
-        // $group_field_id is the field id string, so in this case: 'demo'
-        $group_field_id = $cmb_group->add_field( array(
-            'id'          => 'demo',
+        // Set our CMB2 fields
+
+        $group_field_id = $cmb->add_field( array(
+            'id'          => 'services',
             'type'        => 'group',
-            'description' => __( 'Generates reusable form entries', 'cmb2' ),
+            'name'=>'Services',
             'options'     => array(
-                'group_title'   => __( 'Slider {#}', 'cmb2' ), // {#} gets replaced by row number
-                'add_button'    => __( 'Add Another Slider', 'cmb2' ),
-                'remove_button' => __( 'Remove Slider', 'cmb2' ),
+                'group_title'   => __( 'Entry {#}', 'cmb2' ), // {#} gets replaced by row number
+                'add_button'    => __( 'Add Another Entry', 'cmb2' ),
+                'remove_button' => __( 'Remove Entry', 'cmb2' ),
                 'sortable'      => true, // beta
                 // 'closed'     => true, // true to have the groups closed by default
             ),
         ) );
 
-        /**
-         * Group fields works the same, except ids only need
-         * to be unique to the group. Prefix is not needed.
-         *
-         * The parent field's id needs to be passed as the first argument.
-         */
-        $cmb_group->add_group_field( $group_field_id, array(
-            'name'       => __( 'Title', 'cmb2' ),
-            'id'         => 'title',
-            'type'       => 'text',
-            // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-        ) );
-
-        $cmb_group->add_group_field( $group_field_id, array(
-            'name'        => __( 'Description', 'cmb2' ),
-            'description' => __( 'Write a short description for this entry', 'cmb2' ),
-            'id'          => 'description',
-            'type'        => 'textarea_small',
-        ) );
-
-        $cmb_group->add_group_field( $group_field_id, array(
-            'name' => __( 'Image', 'cmb2' ),
+        // Set our CMB2 fields
+        $cmb->add_group_field( $group_field_id, array(
+            'name' => __( 'Foto', 'cmb2' ),
             'id'   => 'image',
             'type' => 'file',
+        ) );
+
+        $cmb->add_group_field($group_field_id, array(
+            'name' => __( 'Title', 'about' ),
+            'id'   => 'text',
+            'type' => 'text',
+        ) );
+
+        $cmb->add_group_field($group_field_id,array(
+            'id'     => 'link',
+            'description' => esc_html__( 'Link', 'cold-storage' ),
+            'type'   => 'text_url',
+        ));
+
+        $cmb->add_group_field( $group_field_id, array(
+            'name'        => __( 'Text', 'cmb2' ),
+            'id'          => 'description',
+            'type'        => 'textarea',
         ) );
     }
 
@@ -111,5 +111,34 @@ class MetaboxController
         ) );
 
 
+    }
+
+    public function be_metabox_show_on_template( $display, $meta_box ) {
+
+        if ( ! isset( $meta_box['show_on']['key'], $meta_box['show_on']['value'] ) ) {
+            return $display;
+        }
+
+        if ( 'template' !== $meta_box['show_on']['key'] ) {
+            return $display;
+        }
+
+        $post_id = 0;
+
+        // If we're showing it based on ID, get the current ID
+        if ( isset( $_GET['post'] ) ) {
+            $post_id = $_GET['post'];
+        } elseif ( isset( $_POST['post_ID'] ) ) {
+            $post_id = $_POST['post_ID'];
+        }
+
+        if ( ! $post_id ) {
+            return false;
+        }
+
+        $template_name = get_page_template_slug( $post_id );
+        $template_name = ! empty( $template_name ) ? substr( $template_name, 0, -4 ) : '';
+        // See if there's a match
+        return in_array( $template_name, (array) $meta_box['show_on']['value'] );
     }
 }

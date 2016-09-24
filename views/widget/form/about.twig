@@ -1,7 +1,7 @@
 <li>
     <div class="count">{{ number }}</div>
     <div class="extra_wrapper">
-        <div class="text1 col1"><a href="{{ url }}">{{ title }}</a></div>
+        <div class="text1 col1"><a href="{% if url %}{{ url }}{% else %}javascript:void(0);{% endif %}">{{ title }}</a></div>
         {{ description }}
     </div>
 </li>

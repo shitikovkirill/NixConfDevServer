@@ -8,7 +8,7 @@
         </div>
         <div id="film_roll">
             {% for service in services %}
-                {% include 'page/services/service.twig' with{"service": service} %}
+                {% include 'page/services/service.twig' with{"service": service, 'count':services|length} %}
             {% endfor %}
         </div>
         <div class="clear"></div>
@@ -21,11 +21,9 @@
 {% block footer_css_js %}
     {% if services|length > 3 %}
         <script>
-            jQuery(window).load(function() {
-                var film_roll = new FilmRoll({
-                    configure_load: true,
-                    container: '#film_roll',
-                });
+            var film_roll = new FilmRoll({
+                configure_load: true,
+                container: '#film_roll',
             });
         </script>
     {% endif %}

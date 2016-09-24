@@ -1,8 +1,9 @@
     {{ args.before_widget }}
-        <a class="services-sidebar" href="{{ link }}"><img src="{{ image|resize(370, 144) }}" alt="">
-        <div class="capt">
-            <div class="text1">{{ title }}</div>
-            {{ description }}
-           
-        </div></a>
+        <a class="services-sidebar" href="{% if link %}{{ link }}{% else %}javascript:void(0);{% endif %}">
+            <img src="{{ image|resize(370, 144) }}" alt="">
+            <div class="capt">
+                <div class="text1">{{ title }}</div>
+                {{ description }}
+            </div>
+        </a>
     {{ args.after_widget }}
