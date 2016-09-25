@@ -26,6 +26,7 @@ class Main extends Theme
 		$this->add_action('wp_enqueue_scripts', 'ColdStorageController@addJs');
 		$this->add_action('after_setup_theme', 'ColdStorageController@addMenu');
 		$this->add_action('widgets_init','ColdStorageController@addSidebar');
+        $this->add_action('init', 'ColdStorageController@remove_admin_bar');
 		
 		$this->add_shortcode('cold_form', 'ContactFormController@showForm');
 		$this->add_action('wp_ajax_send_mail', 'ContactFormController@sendMail');

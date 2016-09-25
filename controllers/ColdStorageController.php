@@ -186,4 +186,10 @@ class ColdStorageController extends Controller
         $context['site'] = new \TimberSite();
         return $context;
     }
+
+    public function remove_admin_bar() {
+        if (!current_user_can('administrator') && !is_admin()) {
+            add_filter('show_admin_bar', '__return_false'); // отключить
+        }
+    }
 }

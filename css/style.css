@@ -974,4 +974,6 @@ div#logo h3:hover{
     float: left;
     margin-bottom: 10px;
 }
-
+.box {
+    width: 370px;
+}
