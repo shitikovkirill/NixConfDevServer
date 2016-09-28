@@ -977,3 +977,36 @@ div#logo h3:hover{
 .box {
     width: 370px;
 }
+.avatar.avatar-96wp-user-avatar.wp-user-avatar-96.alignnone.photo.avatar-default {
+    margin: 15px;
+}
+.desc {
+    background-color: #e4e4e4;
+    border: 1px solid #bababa;
+    padding: 20px;
+}
+ol.comment-list {
+    margin-left: 15%;
+    width: 85%;
+}
+.date {
+    margin: 5px 0;
+    text-align: right;
+}
+.avatar.avatar-32wp-user-avatar.wp-user-avatar-32.alignnone.photo.avatar-default {
+    margin: 5px;
+}
+#submit {
+    border-radius: 6px !important;
+    padding: 10px;
+}
+.comment-form-comment > textarea {
+    width: 100%;
+}
+.entry-content .title {
+    display: flex;
+    justify-content: space-between;
+}
+.sub-menu{
+    margin-top: 10px !important;
+}
