@@ -1010,3 +1010,9 @@ ol.comment-list {
 .sub-menu{
     margin-top: 10px !important;
 }
+.content ul {
+    list-style: outside none none;
+}
+#bkbtndiv {
+    margin: 20px;
+}

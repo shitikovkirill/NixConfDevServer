@@ -34,6 +34,9 @@ class Main extends Theme
 		$this->add_filter('script_loader_src','ColdStorageController@dellVersion',15, 1);
 		$this->add_filter('style_loader_src','ColdStorageController@dellVersion',15, 1);
 
+        // Page
+        //$this->add_filter ('the_content', 'PagesController@add_shortcode_to_all_page');
+
 		$this->addWidget();
 		$this->addPage();
 
