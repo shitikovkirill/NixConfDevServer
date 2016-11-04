@@ -68,6 +68,14 @@ class ColdStorageController extends Controller
             'before_title' => '<h3>',
             'after_title' => '</h3>',
         ) );
+        register_sidebar( array(
+            'name' => 'Customer: Right sidebar',
+            'id' => 'customer_sidebar',
+            'before_widget' => '<ul class="list">',
+            'after_widget' => '</ul><div class="hor hr2"></div>',
+            'before_title' => '<h3>',
+            'after_title' => '</h3>',
+        ) );
     }
 
     public function addMenu(){
