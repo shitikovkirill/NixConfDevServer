@@ -1,8 +1,8 @@
 <div class="post">
     <time datetime="{{ post.published_at }}">{{ post.post_date|date("d") }}<span>{{ post.post_date|date("M") }}</span></time>
     <div class="extra_wrapper">
-        <div class="text1 col1"><a href="{{post.link}}">{{ post.post_title }} </a></div>by
-        <a href="{{post.author.path}}">{{ post.author.name }}</a>
+        <h2 class="text1 col1"><a href="{{post.link}}">{{ post.post_title }} </a></h2>
+        {#by <a href="{{post.author.path}}">{{ post.author.name }}</a>#}
     </div>
     <div class="clear"></div>
     <img src="{{post.get_thumbnail.src|resize(370, 252)}}" alt="" class="img_inner fl1 fleft">

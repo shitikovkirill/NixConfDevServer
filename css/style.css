@@ -1016,3 +1016,9 @@ ol.comment-list {
 #bkbtndiv {
     margin: 20px;
 }
+.log-form-group > input[name="user_password"] {
+    width: 98% !important;
+}
+.wpcf7-form-control-wrap {
+    position: inherit !important;
+}
