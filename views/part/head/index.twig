@@ -7,21 +7,21 @@
                 {% include 'part/head/phone.twig' %}
             </div>
         </div>
-    </div>
-    <div id="stuck_container">
-        <div class="container">
-            <div class="row">
-                <div class="grid_12">
+        <div id="stuck_container">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12">
 
-                    <div class="menu_block ">
-                        <nav class="horizontal-nav full-width horizontalNav-notprocessed">
-                            {% include 'part/menu/menu.twig'
-                            with { 'menu': menu.main.get_items, 'class':'sf-menu' } %}
-                        </nav>
+                        <div class="menu_block ">
+                            <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                                {% include 'part/menu/menu.twig'
+                                with { 'menu': menu.main.get_items, 'class':'sf-menu' } %}
+                            </nav>
+                            <div class="clear"></div>
+                        </div>
                         <div class="clear"></div>
-                    </div>
-                    <div class="clear"></div>
 
+                    </div>
                 </div>
             </div>
         </div>

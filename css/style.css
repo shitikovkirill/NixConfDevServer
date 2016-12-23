@@ -51,8 +51,8 @@ input {
     outline: none !important;
 }
 
-
 img {
+    border-radius: 6%;
     max-width: 100%;
 }
 
@@ -949,9 +949,8 @@ header .grid_12 {
     background: #323764 none repeat scroll 0 0;
     border-radius: 10px;
     color: white;
-    height: 110px;
+    height: 177px;
     text-indent: 0;
-    width: 188px;
 }
 
 div#logo h3:hover{
@@ -1021,4 +1020,14 @@ ol.comment-list {
 }
 .wpcf7-form-control-wrap {
     position: inherit !important;
+}
+header {
+    padding: 6px 0 0;
+    display: block;
+    position: relative;
+}
+input.wpcf7-form-control.wpcf7-submit {
+    background-color: red !important;
+    color: white !important;
+    font-weight: 800 !important;
 }

@@ -1,14 +1,14 @@
 <div class="post">
     <time datetime="{{ post.published_at }}">{{ post.post_date|date("d") }}<span>{{ post.post_date|date("M") }}</span></time>
     <div class="extra_wrapper">
-        <h2 class="text1 col1"><a href="{{post.link}}">{{ post.post_title }} </a></h2>
+        <h2 class="text1 col1"><a href="{{ post.link }}">{{ post.post_title }} </a></h2>
         {#by <a href="{{post.author.path}}">{{ post.author.name }}</a>#}
     </div>
     <div class="clear"></div>
-    <img src="{{post.get_thumbnail.src|resize(370, 252)}}" alt="" class="img_inner fl1 fleft">
+    <img src="{{ post.get_thumbnail.src|resize(370, 252) }}" alt="" class="img_inner fl1 fleft">
     <div class="extra_wrapper">
-        {{post.get_preview(100,false,'')}}
+        {{ post.get_preview(100,false,'') }}
         <br>
-        <a href="{{post.link}}" class="btn">Read more</a>
+        <a href="{{ post.link }}" class="btn">Read more</a>
     </div>
 </div>
