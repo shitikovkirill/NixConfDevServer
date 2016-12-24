@@ -31,6 +31,14 @@ class ColdStorageController extends Controller
             'after_title' => '',
         ) );
         register_sidebar( array(
+            'name' => 'Home: Footer',
+            'id' => 'home_footer',
+            'before_widget' => '<div class="grid_12 home-footer">',
+            'after_widget' => '</div>',
+            'before_title' => '',
+            'after_title' => '',
+        ) );
+        register_sidebar( array(
             'name' => 'All: Social icon',
             'id' => 'home_icon',
             'before_widget' => '<div class="socials">',

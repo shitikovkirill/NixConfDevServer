@@ -19,10 +19,11 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 $context = Timber::get_context();
-$context['post'] = new TimberPost();
+$context['post']        = new TimberPost();
 $context['home_slider'] = Timber::get_widgets('home_slider');
-$context['home_top'] 	= Timber::get_widgets('home_top');
-$context['home_right'] 	= Timber::get_widgets('home_left');
+$context['home_top']    = Timber::get_widgets('home_top');
+$context['home_footer'] = Timber::get_widgets('home_footer');
+$context['home_right']  = Timber::get_widgets('home_left');
 
 $templates = array( 'home.twig' );
 Timber::render( $templates, $context );
