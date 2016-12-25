@@ -100,6 +100,13 @@ class ColdStorageController extends Controller
         wp_style_add_data('ie','conditional', 'lt IE 9');
 
     }
+    public function deregisterCss()
+    {
+        if (is_front_page()) {
+            wp_dequeue_style('style_register_widget');
+            wp_deregister_style('style_register_widget');
+        }
+    }
     
     public function addJs(){
         wp_deregister_script('jquery');

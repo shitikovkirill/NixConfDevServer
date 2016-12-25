@@ -58,10 +58,14 @@
 				documentScroll = parseInt(_document.scrollTop());
 				if(thisOffsetTop-thisMarginTop < documentScroll){
 					_this.addClass('isStuck');
+					$('#stuck_container .container').addClass('header_bg');
 					_this.css({position:"fixed",top:tmpTop, zIndex:999, left:0, right:0, margin:"0 auto"})
 					pseudoBlock.css({"height":thisOuterHeight});
 				}else{
+					 //$('.header_bg').css({background:"none"});
 					_this.removeClass('isStuck');
+					 $('#stuck_container .container').removeClass('header_bg');
+
 					_this.css({position:"relative", top: 0});
 					pseudoBlock.css({"height":0});
 				}

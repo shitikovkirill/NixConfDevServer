@@ -763,15 +763,6 @@ footer {
     margin-bottom: 30px;
     margin-right: 0;
 }
-
- .map figure,  
- .map figure iframe,  
- #form input,  
- #form textarea,  
- #form .success {
-    width: 100% !important;
-    float: none !important;
-}
  #form .success {
      -moz-box-sizing: border-box;
      -webkit-box-sizing: border-box;
@@ -1097,8 +1088,27 @@ a.services-sidebar:hover {
 .isStuck > .menu_block {
     margin-top: 0px;
 }
-home-footer .wpcf7-form > div {
+.home-footer .wpcf7-form > div {
     align-content: space-between;
     display: flex;
     flex-flow: row wrap;
+}
+#head-menu {
+    bottom: 11px;
+    margin-left: 164px;
+    position: absolute;
+}
+
+.home-footer #form label {
+    width: auto;
+
+}
+
+.home-footer #form label.message {
+    flex-basis: 100%;
+}
+
+
+.home-footer #form input {
+    margin-right: 20px;
 }
