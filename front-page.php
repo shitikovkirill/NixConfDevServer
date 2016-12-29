@@ -17,6 +17,7 @@ if ( ! class_exists( 'Timber' ) ) {
     echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
     return;
 }
+wp_deregister_style('style_register_widget');
 
 $context = Timber::get_context();
 $context['post']        = new TimberPost();
@@ -26,4 +27,4 @@ $context['home_footer'] = Timber::get_widgets('home_footer');
 $context['home_right']  = Timber::get_widgets('home_left');
 
 $templates = array( 'home.twig' );
-Timber::render( $templates, $context );
+Timber::render($templates, $context);

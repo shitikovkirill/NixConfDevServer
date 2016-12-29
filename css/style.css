@@ -962,7 +962,7 @@ div#logo h3:hover{
     position: relative;
     text-align: center;
     float: left;
-    margin-bottom: 10px;
+   # margin-bottom: 10px;
 }
 .box {
     width: 370px;
@@ -1034,7 +1034,7 @@ input.wpcf7-form-control.wpcf7-submit {
 
 @media (min-width: 1199px){
     .grid_10 {
-        width: 1020px;
+       #width: 1020px;
     }
 }
 @media (max-width: 976px) and (min-width: 768px)
@@ -1047,15 +1047,16 @@ input.wpcf7-form-control.wpcf7-submit {
 @media (max-width: 1199px) and (min-width: 980px)
 {
     .grid_10 {
-        width: 780px;
+        width: 750px;
     }
 }
 
 @media (max-width: 979px) and (min-width: 768px){
     .grid_10 {
-        width: 590px;
+        width: 550px;
     }
     .sf-menu>li>a {
+	font-size:14.5px;
         padding: 15px 6px 19px;
     }
 }
@@ -1068,7 +1069,7 @@ a.services-sidebar:hover {
 }
 
 .menu_block {
-    margin-top: 20px;
+    margin-top: 56px;
 
 }
 
@@ -1093,7 +1094,7 @@ a.services-sidebar:hover {
     display: flex;
     flex-flow: row wrap;
 }
-#head-menu {
+#head-menu121 {
     bottom: 11px;
     margin-left: 164px;
     position: absolute;
@@ -1111,4 +1112,48 @@ a.services-sidebar:hover {
 
 .home-footer #form input {
     margin-right: 20px;
+}
+
+.menu_block
+{
+height: 54px;
+}
+
+
+@media only screen and (max-width: 767px)
+{
+.menu_block {
+	height: auto;
+    margin-top: 10px;
+}
+
+.h_phone {
+	padding-top:5px;
+    padding-bottom: 5px;
+    text-align: center;
+    float: none;
+padding-left:0px;
+}
+.logo-container {
+    float: none;
+}
+
+}
+.header_bg{
+background: white;
+}
+@media (max-width: 979px) and (min-width: 768px){
+
+.header_bg{
+background: none;
+}
+
+}
+
+.serv{
+display : none;
+}
+
+.page1 .content {
+    padding-bottom: 5px;
 }

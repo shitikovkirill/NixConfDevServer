@@ -3,13 +3,13 @@
         <div class="row">
             <div class="grid_12">
 
-                <div class="container header_bg" style="background: transparent none repeat scroll 0% 0%;">
+                <div class="container">
                     {% include 'part/head/icon.twig' %}
                     {% include 'part/head/phone.twig' %}
                     <div class="row" id="head-menu">
                         <div class="grid_10">
 
-                            <div class="menu_block" style="height:54px;">
+                            <div class="menu_block">
                                 <nav class="horizontal-nav full-width horizontalNav-notprocessed">
                                     {% include 'part/menu/menu.twig'
                                     with { 'menu': menu.main.get_items, 'class':'sf-menu' } %}
@@ -19,11 +19,8 @@
 
                         </div>
                     </div>
-                </div>
-
+             
             </div>
         </div>
-        <div></div>
     </div>
-    <div class="pseudoStickyBlock" style="position: relative; display: block; height: 0px;"></div>
-</header>
+ </header>

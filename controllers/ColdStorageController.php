@@ -86,10 +86,11 @@ class ColdStorageController extends Controller
         ) );
     }
 
-    public function addMenu(){
-        register_nav_menu( 'primary', 'Primary Menu' );
-        register_nav_menu( 'footer', 'Footer' );
-        register_nav_menu( 'services', 'Services' );
+    public function addMenu()
+    {
+        register_nav_menu('primary', 'Primary Menu');
+        register_nav_menu('footer', 'Footer');
+        register_nav_menu('services', 'Services');
     }
     
     public function addCss(){
@@ -97,7 +98,7 @@ class ColdStorageController extends Controller
         wp_enqueue_style('camera', get_template_directory_uri().'/css/camera.css');
         wp_enqueue_style('style', get_template_directory_uri().'/css/style.css');
         wp_register_style('ie', get_template_directory_uri().'/css/ie.css');
-        wp_style_add_data('ie','conditional', 'lt IE 9');
+        wp_style_add_data('ie', 'conditional', 'lt IE 9');
 
     }
     public function deregisterCss()
@@ -108,7 +109,8 @@ class ColdStorageController extends Controller
         }
     }
     
-    public function addJs(){
+    public function addJs()
+    {
         wp_deregister_script('jquery');
         wp_enqueue_script(
             'jquery',
@@ -190,27 +192,30 @@ class ColdStorageController extends Controller
         );
 
         wp_script_add_data('jquery.mobile.customized.min', 'conditional', '(gt IE 9)|!(IE)');
-        wp_script_add_data('html5shiv','conditional', 'lt IE 9');
+        wp_script_add_data('html5shiv', 'conditional', 'lt IE 9');
     }
 
-    public function dellVersion($src){
-        $parts = explode( '?', $src );
+    public function dellVersion($src)
+    {
+        $parts = explode('?', $src);
         $script =$parts[0];
-	    return $script;
+        return $script;
     }
     
-    public function context($context){
+    public function context($context)
+    {
         $context['menu']['main'] = new \TimberMenu('primary');
         $context['menu']['footer_menu'] = new \TimberMenu('footer');
         $context['theme_url'] = get_template_directory_uri();
         $context['option']['head'] = get_option('head_options');
-        $context['home_icon'] 	= \Timber::get_widgets('home_icon');
-        $context['navigation_sidebar'] 	= \Timber::get_widgets('navigation_sidebar');
+        $context['home_icon'] = \Timber::get_widgets('home_icon');
+        $context['navigation_sidebar'] = \Timber::get_widgets('navigation_sidebar');
         $context['site'] = new \TimberSite();
         return $context;
     }
 
-    public function remove_admin_bar() {
+    public function remove_admin_bar()
+    {
         if (!current_user_can('administrator') && !is_admin()) {
             add_filter('show_admin_bar', '__return_false'); // отключить
         }
