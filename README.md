@@ -1,40 +1,77 @@
-# WORDPRESS THEME TEMPLATE
+Symfony Standard Edition
+========================
 
-[![Latest Stable Version](https://poser.pugx.org/amostajo/wordpress-theme/v/stable)](https://packagist.org/packages/amostajo/wordpress-theme)
-[![Total Downloads](https://poser.pugx.org/amostajo/wordpress-theme/downloads)](https://packagist.org/packages/amostajo/wordpress-theme)
-[![License](https://poser.pugx.org/amostajo/wordpress-theme/license)](https://packagist.org/packages/amostajo/wordpress-theme)
+**WARNING**: This distribution does not support Symfony 4. See the
+[Installing & Setting up the Symfony Framework][15] page to find a replacement
+that fits you best.
 
-The power of **Composer** and **MVC** in your **Wordpress** themes.
+Welcome to the Symfony Standard Edition - a fully-functional Symfony
+application that you can use as the skeleton for your new applications.
 
-**Wordpress THEME** (WPT) is a development template that can be used to create modern and elegant themes. WPT comes with [Composer](https://getcomposer.org/) and [Lightweight MVC](https://github.com/amostajo/lightweight-mvc) framework.
+For details on how to download and get started with Symfony, see the
+[Installation][1] chapter of the Symfony Documentation.
 
-**NOTE:** Need to create a plugin? Use [Wordpress PLUGIN template](https://github.com/amostajo/wordpress-plugin) instead.
+What's inside?
+--------------
 
-The following video tutorial from **Wordpress PLUGIN** can be applied to this theme too:
-[![Video tutorial header](http://s10.postimg.org/njeae0ogp/Videotutorialheader.jpg)](http://youtu.be/fXPNMH8vaMI)
+The Symfony Standard Edition is configured with the following defaults:
 
-- [Requirements](#requirements)
-- [How to use](#how-to-use)
-- [Change Log](#change-log)
-- [Coding Guidelines](#coding-guidelines)
-- [License](#license)
+  * An AppBundle you can use to start coding;
 
-## Requirements
+  * Twig as the only configured template engine;
 
-* PHP >= 5.4.0
+  * Doctrine ORM/DBAL;
 
-## How to use
+  * Swiftmailer;
 
-Please visit the [documentation](http://wordpress-dev.evopiru.com/documentation/) web site to see how to use this template framework.
+  * Annotations enabled for everything.
 
-## Change Log
+It comes pre-configured with the following bundles:
 
-For version upgrades and change log, click [here](https://github.com/amostajo/wordpress-theme/releases).
+  * **FrameworkBundle** - The core Symfony framework bundle
 
-## Coding Guidelines
+  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
+    template and routing annotation capability
 
-The coding is a mix between PSR-2 and Wordpress PHP guidelines.
+  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-## License
+  * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-**Wordpress Theme** is free software distributed under the terms of the MIT license.
+  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
+    component
+
+  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
+    sending emails
+
+  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+
+  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
+    the web debug toolbar
+
+  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
+    configuring and working with Symfony distributions
+
+  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
+    capabilities
+
+  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
+    using the PHP built-in web server
+
+  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
+    integration
+
+All libraries and bundles included in the Symfony Standard Edition are
+released under the MIT or BSD license.
+
+Enjoy!
+
+[1]:  https://symfony.com/doc/3.4/setup.html
+[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
+[7]:  https://symfony.com/doc/3.4/doctrine.html
+[8]:  https://symfony.com/doc/3.4/templating.html
+[9]:  https://symfony.com/doc/3.4/security.html
+[10]: https://symfony.com/doc/3.4/email.html
+[11]: https://symfony.com/doc/3.4/logging.html
+[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
+[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+[15]: https://symfony.com/doc/current/setup.html
