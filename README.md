@@ -1,5 +1,9 @@
-Symfony Standard Edition
+My CMF with Symfony Standard Edition
 ========================
+[Video tutorial](https://www.youtube.com/watch?v=LBZzZ7XGeoo)
+[Web page 1](http://symfony.com/doc/master/cmf/cookbook/database/create_new_project_phpcr_odm.html)
+[Web page 2](http://symfony.com/doc/master/cmf/tutorial/getting-started.html)
+[Web page 3](http://symfony.com/doc/master/cmf/tutorial/getting-started.html)
 
 **WARNING**: This distribution does not support Symfony 4. See the
 [Installing & Setting up the Symfony Framework][15] page to find a replacement

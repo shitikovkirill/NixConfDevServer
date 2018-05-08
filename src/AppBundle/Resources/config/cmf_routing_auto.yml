@@ -1,0 +1,14 @@
+AppBundle\Document\Page:
+    definitions:
+        main:
+            uri_schema: /page/{title}
+    token_providers:
+        title: [content_method, { method: getTitle }]
+
+AppBundle\Document\Post:
+    definitions:
+        main:
+            uri_schema: /post/{date}/{title}
+    token_providers:
+        date: [content_datetime, { method: getDate }]
+        title: [content_method, { method: getTitle }]
