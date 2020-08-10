@@ -22,6 +22,13 @@ in {
         type = types.str;
         description = "domain";
       };
+
+      password = mkOption {
+        type = types.str;
+        default =
+          "'sha1:1b961dc713fb:88483270a63e57d18d43cf337e629539de1436ba'"; # test
+        description = "domain";
+      };
     };
   };
 
@@ -38,7 +45,7 @@ in {
 
     services.jupyter = {
       enable = true;
-      password = "'sha1:1b961dc713fb:88483270a63e57d18d43cf337e629539de1436ba'";
+      password = cfg.password;
       ip = "0.0.0.0";
     };
   };
