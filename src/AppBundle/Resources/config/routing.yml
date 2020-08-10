@@ -1,3 +1,0 @@
-my_homepage:
-    path:     /
-    defaults: { _controller: MyBundle:Default:index }
