@@ -85,6 +85,7 @@ in {
   config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
+      statusPage = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
