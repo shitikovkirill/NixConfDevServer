@@ -42,7 +42,10 @@ in {
         forceSSL = cfg.https;
         locations = {
         "/" = { proxyPass = "http://localhost:8888"; };
-        "/terminals/websocket/" = { proxyWebsockets = true; };
+        "/terminals/websocket/" = {
+            proxyPass = "http://localhost:8888";
+            proxyWebsockets = true;
+         };
         };
       };
     };
