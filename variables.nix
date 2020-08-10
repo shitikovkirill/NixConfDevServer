@@ -1,3 +1,3 @@
 {
-  mainDomain = "dev.server";
+  mainDomain = "server";
 }
