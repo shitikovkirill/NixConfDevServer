@@ -3,7 +3,7 @@ let vars = import ../../variables.nix;
 in with vars; {
   imports = [ ./service.nix ./exporter.nix ];
 
-  services.myMetrics = {
+  services.devMetrics = {
     enable = true;
     domain = mainDomain;
   };

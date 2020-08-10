@@ -3,7 +3,7 @@ with lib;
 let cfg = config.services.thinklocalMail;
 in {
   options = {
-    services.thinklocalMail = {
+    services.devMail = {
       enable = mkOption {
         default = false;
         description = ''

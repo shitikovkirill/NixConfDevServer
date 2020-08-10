@@ -3,7 +3,7 @@ with lib;
 let cfg = config.services.myMetrics;
 in {
   options = {
-    services.myMetrics = {
+    services.devMetrics = {
       enable = mkOption {
         default = false;
         description = ''
