@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.myMetrics;
+let cfg = config.services.devMetrics;
 in {
   options = {
     services.devMetrics = {

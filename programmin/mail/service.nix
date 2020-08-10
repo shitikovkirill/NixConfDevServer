@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.thinklocalMail;
+let cfg = config.services.devMail;
 in {
   options = {
     services.devMail = {
