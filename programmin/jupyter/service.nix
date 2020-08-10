@@ -40,7 +40,10 @@ in {
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = cfg.https;
-        locations = { "/" = { proxyPass = "http://localhost:8888"; }; };
+        locations = {
+        "/" = { proxyPass = "http://localhost:8888"; };
+        "/terminals/websocket/" = { proxyWebsockets = true; };
+        };
       };
     };
 
