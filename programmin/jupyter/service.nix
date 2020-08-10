@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.devMetrics;
+let cfg = config.services.devJupyter;
 in {
   options = {
     services.devJupyter = {
@@ -32,7 +32,7 @@ in {
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = cfg.https;
-        locations = { "/" = { proxyPass = "http://localhost:3000"; }; };
+        locations = { "/" = { proxyPass = "http://localhost:8888"; }; };
       };
     };
 
