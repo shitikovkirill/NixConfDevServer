@@ -18,5 +18,5 @@
 
   services.clearLogs = { enable = true; };
 
-  imports = [ ./users.nix ./network.nix ./aliases.nix ./programs.nix ];
+  imports = [ ./users.nix ./network.nix ./aliases.nix ./programs.nix ./clear_logs/service.nix ];
 }
