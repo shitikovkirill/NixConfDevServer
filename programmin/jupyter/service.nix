@@ -36,6 +36,7 @@ in {
     services.nginx = {
       enable = true;
       statusPage = true;
+      recommendedProxySettings = true;
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = cfg.https;
