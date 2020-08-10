@@ -95,7 +95,7 @@ in {
         forceSSL = cfg.https;
         locations = { "/" = { proxyPass = "http://localhost:3000"; }; };
       };
-      virtualHosts."prometeus.${cfg.domain}" = {
+      virtualHosts."prometheus.${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = cfg.https;
         basicAuth = cfg.auth;
