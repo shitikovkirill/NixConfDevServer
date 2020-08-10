@@ -137,7 +137,7 @@ in {
         {
           job_name = "nginx";
           static_configs = [{
-            targets = cfg.nginxTargets;
+            targets = [ "localhost:9113" ] ++ cfg.nginxTargets;
             labels = { role = "nginx"; };
           }];
         }
