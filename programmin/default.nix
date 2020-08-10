@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./prometheus ./mail ];
+  imports = [ ./prometheus ./mail ./jupyter ];
 }
