@@ -5,6 +5,6 @@ in with vars; {
 
   services.myMetrics = {
     enable = true;
-    domain = "prometheus." + mainDomain;
+    domain = mainDomain;
   };
 }
