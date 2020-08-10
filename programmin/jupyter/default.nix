@@ -3,7 +3,7 @@ let vars = import ../../variables.nix;
 in with vars; {
   imports = [ ./service.nix ];
 
-  services.devMetrics = {
+  services.devJupyter = {
     enable = true;
     domain = "jupyter." + mainDomain;
   };
