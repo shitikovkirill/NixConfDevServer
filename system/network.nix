@@ -5,7 +5,8 @@
   networking = {
     hostName = "dev";
     firewall = {
-      enable = false;
+      enable = true;
+      allowedTCPPorts = [ 80 443 ];
     };
   };
 }
