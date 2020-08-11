@@ -61,6 +61,7 @@ in {
 
     services.rabbitmq = {
       enable = true;
+      listenAddress = "0.0.0.0";
       plugins = [ "rabbitmq_management" "rabbitmq_prometheus" ];
       #config = "[{rabbit, [{loopback_users, []}]}].";
     };
