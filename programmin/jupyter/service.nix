@@ -41,10 +41,10 @@ in {
         enableACME = cfg.https;
         forceSSL = cfg.https;
         locations = {
-        "/" = {
+          "/" = {
             proxyPass = "http://localhost:8888";
             proxyWebsockets = true;
-         };
+          };
         };
       };
     };

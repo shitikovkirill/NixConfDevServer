@@ -1,5 +1,18 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  motd = with config; ''
+    Welcome to ${networking.hostName}
+
+    - This machine is managed by NixOS
+    - All changes are futile
+
+    OS:      NixOS ${system.nixos.release} (${system.nixos.codeName})
+    Version: ${system.nixos.version}
+    Kernel:  ${boot.kernelPackages.kernel.version}
+  '';
+in {
   users.users = {
+    inherit motd;
     kirill = {
       isNormalUser = true;
       home = "/home/kirill";
