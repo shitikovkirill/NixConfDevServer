@@ -4,7 +4,6 @@ let
     Welcome to ${networking.hostName}
 
     - This machine is managed by NixOS
-    - All changes are futile
 
     OS:      NixOS ${system.nixos.release} (${system.nixos.codeName})
     Version: ${system.nixos.version}
