@@ -63,8 +63,6 @@ in {
           displayName = "Sqlalchemy";
           argv = [
             "${env.interpreter}"
-            "-m"
-            "sqlalchemy"
             "-f"
             "{connection_file}"
           ];
@@ -87,8 +85,6 @@ in {
             "{connection_file}"
           ];
           language = "python";
-          logo32 = "${env.sitePackages}/ipykernel/resources/logo-32x32.png";
-          logo64 = "${env.sitePackages}/ipykernel/resources/logo-64x64.png";
         };
       };
     };
