@@ -53,6 +53,44 @@ in {
       enable = true;
       password = cfg.password;
       ip = "0.0.0.0";
+      kernels = {
+        sqlalchemy = let
+          env = (pkgs.python3.withPackages (pythonPackages:
+            with pythonPackages; [
+              sqlalchemy
+            ]));
+        in {
+          displayName = "Sqlalchemy";
+          argv = [
+            "${env.interpreter}"
+            "-m"
+            "sqlalchemy"
+            "-f"
+            "{connection_file}"
+          ];
+          language = "python";
+        };
+        python3 = let
+          env = (pkgs.python3.withPackages (pythonPackages:
+            with pythonPackages; [
+              ipykernel
+              pandas
+              scikitlearn
+            ]));
+        in {
+          displayName = "Python 3 for machine learning";
+          argv = [
+            "${env.interpreter}"
+            "-m"
+            "ipykernel_launcher"
+            "-f"
+            "{connection_file}"
+          ];
+          language = "python";
+          logo32 = "${env.sitePackages}/ipykernel/resources/logo-32x32.png";
+          logo64 = "${env.sitePackages}/ipykernel/resources/logo-64x64.png";
+        };
+      };
     };
   };
 }
