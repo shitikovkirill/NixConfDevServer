@@ -68,7 +68,7 @@ in {
           ];
           language = "python";
         };
-        python3 = let
+        machineLearning = let
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
               ipykernel
