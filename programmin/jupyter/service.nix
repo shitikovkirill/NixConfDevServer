@@ -90,8 +90,8 @@ in {
           ];
           language = "python";
         };
-        asyncaio  = with pkgs; let
-          ipytest = pkgs.callPackage ./pkgs/ipytest.nix {
+        asyncaio  = with pkgs; with pythonPackages; let
+          ipytest = callPackage ./pkgs/ipytest.nix {
             buildPythonPackage = python38Packages.buildPythonPackage;
             fetchPypi = python38Packages.fetchPypi;
           };
