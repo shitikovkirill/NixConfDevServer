@@ -63,6 +63,7 @@ in {
           displayName = "Sqlalchemy";
           argv = [
             "${env.interpreter}"
+            "{connection_file}"
           ];
           language = "python";
         };
