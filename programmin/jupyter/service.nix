@@ -63,8 +63,6 @@ in {
           displayName = "Sqlalchemy";
           argv = [
             "${env.interpreter}"
-            "-f"
-            "{connection_file}"
           ];
           language = "python";
         };
@@ -83,18 +81,6 @@ in {
             "ipykernel_launcher"
             "-f"
             "{connection_file}"
-          ];
-          language = "python";
-        };
-        asyncaio  = let
-          env = (pkgs.python3.withPackages (pythonPackages:
-            with pythonPackages; [
-              asynctest
-            ]));
-        in {
-          displayName = "Asyncaio";
-          argv = [
-            "${env.interpreter}"
           ];
           language = "python";
         };
