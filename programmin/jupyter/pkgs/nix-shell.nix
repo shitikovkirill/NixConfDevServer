@@ -1,5 +1,5 @@
 with import <nixpkgs> {};
-with pythonPackages;
+with python38Packages;
 ( let
     ipython = callPackage ./ipytest.nix {};
   in python38.withPackages (ps: [ ipython ])
