@@ -57,12 +57,16 @@ in {
         sqlalchemy = let
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
+              ipykernel
               sqlalchemy
             ]));
         in {
           displayName = "Sqlalchemy";
           argv = [
             "${env.interpreter}"
+            "-m"
+            "ipykernel_launcher"
+            "-f"
             "{connection_file}"
           ];
           language = "python";
@@ -76,6 +80,23 @@ in {
             ]));
         in {
           displayName = "Python 3 for machine learning";
+          argv = [
+            "${env.interpreter}"
+            "-m"
+            "ipykernel_launcher"
+            "-f"
+            "{connection_file}"
+          ];
+          language = "python";
+        };
+        asyncaio  = let
+          env = (pkgs.python3.withPackages (pythonPackages:
+            with pythonPackages; [
+              ipykernel
+              asynctest
+            ]));
+        in {
+          displayName = "Asyncaio";
           argv = [
             "${env.interpreter}"
             "-m"
