@@ -86,6 +86,20 @@ in {
           ];
           language = "python";
         };
+        asyncaio  = let
+          env = (pkgs.python3.withPackages (pythonPackages:
+            with pythonPackages; [
+              asynctest
+            ]));
+        in {
+          displayName = "Asyncaio";
+          argv = [
+            "${env.interpreter}"
+            "-f"
+            "{connection_file}"
+          ];
+          language = "python";
+        };
       };
     };
   };
