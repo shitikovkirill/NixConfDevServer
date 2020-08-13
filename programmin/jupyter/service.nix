@@ -91,7 +91,7 @@ in {
           language = "python";
         };
         asyncaio  = let
-          ipytest = pkgs.callPackage ./pkgs/ipytest.nix {};
+          ipytest = pkgs.python3.callPackage ./pkgs/ipytest.nix {};
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
               ipykernel
