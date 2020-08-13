@@ -90,9 +90,10 @@ in {
           ];
           language = "python";
         };
-        asyncaio  = with pkgs.python3Packages; with pkgs; let
+        asyncaio  = with pkgs; let
           ipytest = pkgs.callPackage ./pkgs/ipytest.nix {
             buildPythonPackage = python38Packages.buildPythonPackage;
+            fetchPypi = python38Packages.fetchPypi;
           };
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
