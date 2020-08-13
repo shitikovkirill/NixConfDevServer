@@ -93,6 +93,12 @@ in {
             ]));
         in {
           displayName = "Asyncaio";
+          argv = [
+            "${env.interpreter}"
+            "-m" "asynctest"
+            "-f"
+            "{connection_file}"
+          ];
           language = "python";
         };
       };
