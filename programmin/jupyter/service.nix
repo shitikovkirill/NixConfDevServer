@@ -58,6 +58,7 @@ in {
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
               ipykernel
+              ipdb
               sqlalchemy
             ]));
         in {
@@ -93,6 +94,7 @@ in {
           env = (pkgs.python3.withPackages (pythonPackages:
             with pythonPackages; [
               ipykernel
+              ipdb
               asynctest
             ]));
         in {
