@@ -2,7 +2,8 @@
 , buildPythonPackage
 , fetchPypi
 , ipython
-, isPyPy
+, pytest
+, packaging
 }:
 
 buildPythonPackage rec {
