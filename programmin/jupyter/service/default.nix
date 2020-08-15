@@ -2,6 +2,14 @@
 
 with lib;
 let
+  ipytest = pkgs.callPackage ../pkgs/ipytest.nix {
+    buildPythonPackage = pkgs.python38Packages.buildPythonPackage;
+    fetchPypi = pkgs.python38Packages.fetchPypi;
+    ipython = pkgs.python38Packages.ipython;
+    pytest = pkgs.python38Packages.pytest;
+    packaging = pkgs.python38Packages.packaging;
+  };
+
   cfg = config.services.jupyterlab;
 
   jupyterWith = let
