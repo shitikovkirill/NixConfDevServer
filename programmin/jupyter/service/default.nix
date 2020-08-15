@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with lib;
+with python38Packages;
 let
   ipytest = pkgs.callPackage ../pkgs/ipytest.nix { };
 
