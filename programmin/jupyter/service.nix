@@ -50,7 +50,12 @@ in {
       };
     };
 
-    services.jupyterlab.enable = false;
+    services.jupyterlab = {
+        enable = true;
+        password = cfg.password;
+        ip = "0.0.0.0";
+        notebookDir = "/var/lib/jupyter";
+    };
 
     services.jupyter = {
       enable = false;
