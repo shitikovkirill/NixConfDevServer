@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-
+with pkgs;
+with python38Packages;
 let
+  ipytest = callPackage ./pkgs/ipytest.nix { };
 
   cfg = config.services.jupyterlab;
 
@@ -24,13 +26,18 @@ let
     packages = p: with p; [ numpy ];
   };
 
-  iHaskell = jupyterWith.kernels.iHaskellWith {
-    name = "haskell";
-    packages = p: with p; [ hvega formatting ];
+  iPythonAsync = jupyterWith.kernels.iPythonWith {
+    name = "python_async";
+    packages = p: with p; [ ipdb asynctest ipytest ];
+  };
+
+  iPythonSql = jupyterWith.kernels.iPythonWith {
+    name = "sqlalchemy";
+    packages = p: with p; [ ipdb sqlalchemy ];
   };
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPython ];
+    kernels = [ iPythonAsync iPythonSql ];
   };
 
 in {
