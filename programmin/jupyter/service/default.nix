@@ -2,7 +2,7 @@
 
 with lib;
 let
-  ipytest = pkgs.callPackage ./pkgs/ipytest.nix { };
+  ipytest = pkgs.callPackage ../pkgs/ipytest.nix { };
 
   cfg = config.services.jupyterlab;
 
