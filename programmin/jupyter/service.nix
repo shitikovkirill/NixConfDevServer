@@ -2,6 +2,7 @@
 with lib;
 let cfg = config.services.devJupyter;
 in {
+  imports = [ ./service ];
   options = {
     services.devJupyter = {
       enable = mkOption {
@@ -49,8 +50,10 @@ in {
       };
     };
 
+    services.jupyterlab.enable = false;
+
     services.jupyter = {
-      enable = true;
+      enable = false;
       password = cfg.password;
       ip = "0.0.0.0";
       kernels = {
