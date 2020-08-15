@@ -1,4 +1,4 @@
-{ stdenv, buildPythonPackage, fetchPypi, ipython}:
+{ stdenv, buildPythonPackage, fetchPypi, ipython, pytest, packaging }:
 
 buildPythonPackage rec {
   pname = "ipytest";
@@ -9,7 +9,7 @@ buildPythonPackage rec {
     sha256 = "1b3sb2a80y21vbcgk3abb1x1ip2wxxmg4sx4s6bdhd7xvmbbpp3j";
   };
 
-  propagatedBuildInputs = [ ipython ];
+  propagatedBuildInputs = [ ipython pytest packaging ];
 
   preCheck = ''
     export HOME=$(mktemp -d)
