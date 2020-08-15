@@ -3,11 +3,11 @@
 with lib;
 let
   ipytest = pkgs.callPackage ../pkgs/ipytest.nix {
-    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-    fetchPypi = pkgs.python3Packages.fetchPypi;
-    ipython = pkgs.python3Packages.ipython;
-    pytest = pkgs.python3Packages.pytest;
-    packaging = pkgs.python3Packages.packaging;
+    buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
+    fetchPypi = pkgs.pythonPackages.fetchPypi;
+    ipython = pkgs.pythonPackages.ipython;
+    pytest = pkgs.pythonPackages.pytest;
+    packaging = pkgs.pythonPackages.packaging;
   };
 
   cfg = config.services.jupyterlab;
