@@ -29,9 +29,7 @@ let
     packages = p: with p; [ hvega formatting ];
   };
 
-  jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPython iHaskell ];
-  };
+  jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {};
 
 in {
   meta.maintainers = with maintainers; [ ];
