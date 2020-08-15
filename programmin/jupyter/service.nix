@@ -51,9 +51,9 @@ in {
     };
 
     services.jupyterlab = {
-        enable = true;
-        password = cfg.password;
-        ip = "0.0.0.0";
+      enable = true;
+      password = cfg.password;
+      ip = "0.0.0.0";
     };
 
     services.jupyter = {
@@ -97,26 +97,28 @@ in {
           ];
           language = "python";
         };
-        asyncaio  = with pkgs; with python38Packages; let
-          ipytest = callPackage ./pkgs/ipytest.nix {};
-          env = (pkgs.python3.withPackages (pythonPackages:
-            with pythonPackages; [
-              ipykernel
-              ipdb
-              asynctest
-              ipytest
-            ]));
-        in {
-          displayName = "Asyncaio";
-          argv = [
-            "${env.interpreter}"
-            "-m"
-            "ipykernel_launcher"
-            "-f"
-            "{connection_file}"
-          ];
-          language = "python";
-        };
+        asyncaio = with pkgs;
+          with python38Packages;
+          let
+            ipytest = callPackage ./pkgs/ipytest.nix { };
+            env = (pkgs.python3.withPackages (pythonPackages:
+              with pythonPackages; [
+                ipykernel
+                ipdb
+                asynctest
+                ipytest
+              ]));
+          in {
+            displayName = "Asyncaio";
+            argv = [
+              "${env.interpreter}"
+              "-m"
+              "ipykernel_launcher"
+              "-f"
+              "{connection_file}"
+            ];
+            language = "python";
+          };
       };
     };
   };

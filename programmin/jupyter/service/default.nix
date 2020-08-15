@@ -6,23 +6,32 @@ let
 
   cfg = config.services.jupyterlab;
 
-  jupyterWith =
-    let
-      jupyterWithSrc = pkgs.fetchFromGitHub {
-        owner = "tweag";
-        repo = "jupyterWith";
-        rev = "1176b9e8d173f2d2789705ad55c7b53a06155e0f";
-        sha256 = "0pgqk7bs89d1spjs2kvwgcnqfil6nsawfwiivrm4s61s9lzd78c0";
-      };
-      haskellOverlay = import "${jupyterWithSrc}/nix/haskell-overlay.nix";
-      pythonOverlay = import "${jupyterWithSrc}/nix/python-overlay.nix";
-    in
-      import jupyterWithSrc {
-        pkgs = pkgs.appendOverlays [ pythonOverlay haskellOverlay ];
-      };
+  jupyterWith = let
+    jupyterWithSrc = pkgs.fetchFromGitHub {
+      owner = "tweag";
+      repo = "jupyterWith";
+      rev = "1176b9e8d173f2d2789705ad55c7b53a06155e0f";
+      sha256 = "0pgqk7bs89d1spjs2kvwgcnqfil6nsawfwiivrm4s61s9lzd78c0";
+    };
+    haskellOverlay = import "${jupyterWithSrc}/nix/haskell-overlay.nix";
+    pythonOverlay = import "${jupyterWithSrc}/nix/python-overlay.nix";
+  in import jupyterWithSrc {
+    pkgs = pkgs.appendOverlays [ pythonOverlay haskellOverlay ];
+  };
 
-  jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {};
+  iPython = jupyterWith.kernels.iPythonWith {
+    name = "python";
+    packages = p: with p; [ numpy ];
+  };
 
+  iHaskell = jupyterWith.kernels.iHaskellWith {
+    name = "haskell";
+    packages = p: with p; [ hvega formatting ];
+  };
+
+  jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
+    kernels = [ iPython iHaskell ];
+  };
 
 in {
   meta.maintainers = with maintainers; [ ];
@@ -111,7 +120,7 @@ in {
 
     extraFlags = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
       description = ''
         Additional command line flags to be passed to jupyter-lab.
       '';
@@ -119,7 +128,7 @@ in {
   };
 
   config = mkMerge [
-    (mkIf cfg.enable  {
+    (mkIf cfg.enable {
       systemd.services.jupyterlab = {
         description = "JupyterLab server";
 
@@ -131,21 +140,22 @@ in {
         serviceConfig = {
           Restart = "always";
           RestartSec = 10;
-          ExecStart =
-            let
-              notebookConfigFile = pkgs.writeText "jupyter_notebook_config.py" ''
-                ${cfg.notebookConfig}
-                c.NotebookApp.password = ${cfg.password}
-              '';
-              args = [
-                "--no-browser"
-                "--ip=${cfg.ip}"
-                "--port=${toString cfg.port}"
-                "--port-retries=0"
-                "--notebook-dir=${cfg.notebookDir}"
-                "--NotebookApp.config_file=${notebookConfigFile}"
-              ] ++ cfg.extraFlags;
-            in ''${cfg.package}/bin/jupyter-lab ${concatMapStringsSep " \\\n" escapeShellArg args}'';
+          ExecStart = let
+            notebookConfigFile = pkgs.writeText "jupyter_notebook_config.py" ''
+              ${cfg.notebookConfig}
+              c.NotebookApp.password = ${cfg.password}
+            '';
+            args = [
+              "--no-browser"
+              "--ip=${cfg.ip}"
+              "--port=${toString cfg.port}"
+              "--port-retries=0"
+              "--notebook-dir=${cfg.notebookDir}"
+              "--NotebookApp.config_file=${notebookConfigFile}"
+            ] ++ cfg.extraFlags;
+          in "${cfg.package}/bin/jupyter-lab ${
+            concatMapStringsSep " \\\n" escapeShellArg args
+          }";
           User = cfg.user;
           Group = cfg.group;
           WorkingDirectory = "~";
@@ -154,7 +164,7 @@ in {
     })
 
     (mkIf (cfg.enable && (cfg.group == "jupyterlab")) {
-      users.groups.jupyterlab = {};
+      users.groups.jupyterlab = { };
     })
     (mkIf (cfg.enable && (cfg.user == "jupyterlab")) {
       users.extraUsers.jupyterlab = {

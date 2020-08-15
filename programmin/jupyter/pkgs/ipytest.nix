@@ -1,10 +1,4 @@
-{ stdenv
-, buildPythonPackage
-, fetchPypi
-, ipython
-, pytest
-, packaging
-}:
+{ stdenv, buildPythonPackage, fetchPypi, ipython, pytest, packaging }:
 
 buildPythonPackage rec {
   pname = "ipytest";
