@@ -5,6 +5,7 @@ let
   ipytest = pkgs.callPackage ../pkgs/ipytest.nix {
     buildPythonPackage = pkgs.python38Packages.buildPythonPackage;
     fetchPypi = pkgs.python38Packages.fetchPypi;
+    ipython = pkgs.python38Packages.ipython;
   };
 
   cfg = config.services.jupyterlab;
