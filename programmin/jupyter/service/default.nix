@@ -39,20 +39,22 @@ let
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
 
-  iNix = jupyterWith.kernels.iNixKernel {
-    name = "Nix";
-  };
+  iNix = jupyterWith.kernels.iNixKernel { name = "Nix"; };
 
-  iJavascript = jupyterWith.kernels.iJavascript {
-    name = "JavaScript";
-  };
+  iJavascript = jupyterWith.kernels.iJavascript { name = "JavaScript"; };
 
-  iAnsibleKernel = jupyterWith.kernels.ansibleKernel {
-    name = "Ansible";
-  };
+  iAnsibleKernel = jupyterWith.kernels.ansibleKernel { name = "Ansible"; };
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPythonDataScience iPythonAsync iPythonSql gophernotes iNix iJavascript iAnsibleKernel ];
+    kernels = [
+      iPythonDataScience
+      iPythonAsync
+      iPythonSql
+      gophernotes
+      iNix
+      # iJavascript
+      iAnsibleKernel
+    ];
   };
 
 in {
