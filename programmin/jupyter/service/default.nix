@@ -39,8 +39,12 @@ let
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
 
+  iNix = jupyterWith.kernels.iNixKernel {
+    name = "Nix-kernel";
+  };
+
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPythonDataScience iPythonAsync iPythonSql gophernotes ];
+    kernels = [ iPythonDataScience iPythonAsync iPythonSql gophernotes iNix ];
   };
 
 in {
