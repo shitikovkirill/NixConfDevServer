@@ -25,11 +25,6 @@ let
     pkgs = pkgs.appendOverlays [ pythonOverlay haskellOverlay ];
   };
 
-  iPython = jupyterWith.kernels.iPythonWith {
-    name = "python";
-    packages = p: with p; [ numpy ];
-  };
-
   iPythonAsync = jupyterWith.kernels.iPythonWith {
     name = "python_async";
     packages = p: with p; [ ipdb asynctest ipytest ];
@@ -40,8 +35,12 @@ let
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
+  gophernotes = jupyterWith.kernels.gophernotes {
+    name="Go";
+  };
+
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPythonAsync iPythonSql ];
+    kernels = [ iPythonAsync iPythonSql gophernotes ];
   };
 
 in {
