@@ -47,6 +47,10 @@ let
     name = "JavaScript";
   };
 
+  iAnsibleKernel = jupyterWith.kernels.ansibleKernel {
+    name = "Ansible";
+  };
+
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
     kernels = [ iPythonDataScience iPythonAsync iPythonSql gophernotes iNix ];
   };
