@@ -14,7 +14,7 @@ let
   in import jupyterWithSrc { };
 
   iPythonDataScience = jupyterWith.kernels.iPythonWith {
-    name = "datascience";
+    name = "pythonDataScience";
     packages = p:
       with p; [
         numpy
@@ -28,19 +28,23 @@ let
   };
 
   iPythonAsync = jupyterWith.kernels.iPythonWith {
-    name = "python_async";
+    name = "pythonAsync";
     packages = p: with p; [ ipdb asynctest ];
   };
 
   iPythonSql = jupyterWith.kernels.iPythonWith {
-    name = "sqlalchemy";
+    name = "pythonSqlalchemy";
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
 
   iNix = jupyterWith.kernels.iNixKernel {
-    name = "Nix-kernel";
+    name = "Nix";
+  };
+
+  iJavascript = jupyterWith.kernels.iJavascript {
+    name = "JavaScript";
   };
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
