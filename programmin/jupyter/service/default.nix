@@ -2,32 +2,34 @@
 
 with lib;
 let
-  ipytest = pkgs.callPackage ../pkgs/ipytest.nix {
-    buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
-    fetchPypi = pkgs.pythonPackages.fetchPypi;
-    ipython = pkgs.pythonPackages.ipython;
-    pytest = pkgs.pythonPackages.pytest;
-    packaging = pkgs.pythonPackages.packaging;
-  };
-
   cfg = config.services.jupyterlab;
 
   jupyterWith = let
     jupyterWithSrc = pkgs.fetchFromGitHub {
       owner = "tweag";
       repo = "jupyterWith";
-      rev = "1176b9e8d173f2d2789705ad55c7b53a06155e0f";
-      sha256 = "0pgqk7bs89d1spjs2kvwgcnqfil6nsawfwiivrm4s61s9lzd78c0";
+      rev = "41ef8935b2a0eb1ee8729fd53cf4b08313541628";
+      sha256 = "0073ddld6m5kqv141gb2aq1dys4sv9vhifgic0w8qqjpm0l24kzf";
     };
-    haskellOverlay = import "${jupyterWithSrc}/nix/haskell-overlay.nix";
-    pythonOverlay = import "${jupyterWithSrc}/nix/python-overlay.nix";
-  in import jupyterWithSrc {
-    pkgs = pkgs.appendOverlays [ pythonOverlay haskellOverlay ];
+  in import jupyterWithSrc { };
+
+  iPythonDataScience = jupyterWith.kernels.iPythonWith {
+    name = "datascience";
+    packages = p:
+      with p; [
+        numpy
+        scipy
+        pandas
+        matplotlib
+        seaborn
+        umap-learn
+        scikitlearn
+      ];
   };
 
   iPythonAsync = jupyterWith.kernels.iPythonWith {
     name = "python_async";
-    packages = p: with p; [ ipdb asynctest ipytest ];
+    packages = p: with p; [ ipdb asynctest ];
   };
 
   iPythonSql = jupyterWith.kernels.iPythonWith {
@@ -35,12 +37,10 @@ let
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
-  gophernotes = jupyterWith.kernels.gophernotes {
-    name="Go";
-  };
+  gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
-    kernels = [ iPythonAsync iPythonSql gophernotes ];
+    kernels = [ iPythonDataScience iPythonAsync iPythonSql gophernotes ];
   };
 
 in {
