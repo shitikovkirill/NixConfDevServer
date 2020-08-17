@@ -7,7 +7,7 @@ let
 in {
 
   options = {
-    services.sentry = {
+    services.devPostgres = {
       enable = mkOption {
         default = false;
         description = ''
