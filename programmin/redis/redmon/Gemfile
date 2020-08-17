@@ -1,3 +1,3 @@
 source 'https://rubygems.org' do
-  gem 'redmon'
+  gem 'redmon', :platforms => :ruby_18
 end
