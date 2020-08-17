@@ -33,7 +33,7 @@ in {
     };
 
     docker-containers = {
-      sentry_web = {
+      redis_admin = {
         image = "vieux/redmon";
         extraDockerOptions = [ "--network=host" ];
       };
