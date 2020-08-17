@@ -7,9 +7,8 @@ pkgsOld = let
     pinnedPkgs = hostPkgs.fetchFromGitHub {
       owner = "NixOS";
       repo = "nixpkgs";
-      # nixos-unstable as of 2017-11-13T08:53:10-00:00
-      rev = "9c31c72cafe536e0c21238b2d47a23bfe7d1b033";
-      sha256 = "0pn142js99ncn7f53bw7hcp99ldjzb2m7xhjrax00xp72zswzv2n";
+      rev = "120b013e0c082d58a5712cde0a7371ae8b25a601";
+      sha256 = "0hk4y2vkgm1qadpsm4b0q1vxq889jhxzjx3ragybrlwwg54mzp4f";
     };
   in import pinnedPkgs {};
 in bundlerApp {
