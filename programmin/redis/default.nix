@@ -3,7 +3,7 @@ let vars = import ../../variables.nix;
 in with vars; {
   imports = [ ./service.nix ];
 
-  services.devRadis = {
+  services.devRedis = {
     enable = true;
   };
 }
