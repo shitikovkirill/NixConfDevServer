@@ -2,8 +2,7 @@
 
 with lib;
 
-let
-  cfg = config.services.devPostgres;
+let cfg = config.services.devPostgres;
 in {
 
   options = {
@@ -12,6 +11,33 @@ in {
         default = false;
         description = ''
           Enable sentry.
+        '';
+      };
+
+      domain = mkOption {
+        type = types.str;
+        description = "domain";
+      };
+
+      https = mkOption {
+        default = false;
+        description = ''
+          Enable https.
+        '';
+      };
+
+      auth = mkOption {
+        type = types.attrsOf types.str;
+        default = { };
+        example = literalExample ''
+          {
+            user = "password";
+          };
+        '';
+        description = ''
+          Basic Auth protection for a vhost.
+          WARNING: This is implemented to store the password in plain text in the
+          nix store.
         '';
       };
 
@@ -28,6 +54,38 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [ cfg.database.port 80 443 ];
+    };
+
+    services.nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+
+      upstreams = {
+        "db_admin_server" = { servers = { "127.0.0.1:8080" = { }; }; };
+      };
+
+      virtualHosts = {
+        "${cfg.domain}" = {
+          enableACME = cfg.https;
+          forceSSL = cfg.https;
+          basicAuth = cfg.auth;
+          locations = {
+            "/" = {
+              extraConfig = ''
+                proxy_set_header "X-Real-Ip" "$remote_addr";
+                proxy_set_header "Host" "$host";
+              '';
+              proxyPass = "http://db_admin_server";
+            };
+          };
+        };
+      };
+    };
+
     services.postgresql = {
       enable = true;
       enableTCPIP = true;
@@ -54,7 +112,8 @@ in {
       enable = true;
       localOnly = false;
       connections = {
-        main-server = "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
+        main-db =
+          "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
       };
     };
   };

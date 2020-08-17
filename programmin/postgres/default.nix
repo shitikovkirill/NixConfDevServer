@@ -1,17 +1,12 @@
 { config, lib, pkgs, ... }:
 
-{
+let vars = import ../../variables.nix;
+in with vars; {
   imports = [ ./service.nix ];
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 5432 8080 ];
-  };
 
   services.devPostgres = {
     enable = true;
-    database = {
-        user = "kirill";
-    };
+    domain = "db." + mainDomain;
+    database = { user = "kirill"; };
   };
 }
