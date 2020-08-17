@@ -13,11 +13,8 @@ pkgsOld = let
     };
   in import pinnedPkgs {};
 in bundlerApp {
-  ruby = pkgsOld.ruby_1_8;
+  ruby = pkgsOld.ruby;
   pname = "redmon";
   gemdir = ./.;
   exes = [ "redmon" ];
-  meta = {
-   platforms = ["ruby_1_8"];
-  };
 }
