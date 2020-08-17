@@ -2,6 +2,6 @@
 
 {
 
-  imports = [ ./home-manager ./system ./programmin ./redis ];
+  imports = [ ./home-manager ./system ./programmin ];
 }
 
