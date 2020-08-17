@@ -32,13 +32,10 @@ in {
       bind = "0.0.0.0";
     };
 
-    systemd.services.devRedisAdmin = {
-      description = "Redis admin";
-      after = [ "moodle-init.service" ];
-      serviceConfig = {
-        User = user;
-        Group = group;
-        ExecStart = "${redmon}/bin/redmon";
+    docker-containers = {
+      sentry_web = {
+        image = "vieux/redmon";
+        extraDockerOptions = [ "--network=host" ];
       };
     };
 
