@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.services.devRedis;
-  redmon = callPackage ./redmon {};
+  redmon = callPackage ./redmon { };
   user = "redis_admin";
   group = "redis_admin";
 in {
@@ -18,6 +18,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    networking = {
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ 80 443 4567 ];
+      };
+    };
+
     services.redis = {
       enable = true;
       openFirewall = true;
