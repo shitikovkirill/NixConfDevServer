@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.services.devRedis;
-  redmon = callPackage ./redmon { };
+  redmon = pkgs.callPackage ./redmon { };
   user = "redis_admin";
   group = "redis_admin";
 in {
