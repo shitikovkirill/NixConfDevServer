@@ -16,6 +16,8 @@ in {
   config = mkIf cfg.enable {
     services.redis = {
       enable = true;
+      openFirewall = true;
+      bund = "0.0.0.0";
     };
   };
 }
