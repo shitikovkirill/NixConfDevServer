@@ -52,6 +52,7 @@ in {
     };
     services.pgmanage = {
       enable = true;
+      localOnly = false;
       connections = {
         main-server = "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
       };
