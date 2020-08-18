@@ -5,6 +5,6 @@ in with vars; {
 
   services.devRabbitmq = {
     enable = true;
-    domain = "rabbitmq." + mainDomain;
+    domain = "radm." + mainDomain;
   };
 }
