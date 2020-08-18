@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.devRabbitmq;
+let
+  cfg = config.services.devRabbitmq;
+  proxy_pass = "http://127.0.0.1:15672";
 in {
   options = {
     services.devRabbitmq = {
@@ -38,17 +40,11 @@ in {
       enable = true;
       recommendedGzipSettings = true;
 
-      upstreams = {
-        "rabbitmq_server" = { servers = { "127.0.0.1:15672" = { }; }; };
-      };
-
       virtualHosts = {
         "${cfg.domain}" = {
           enableACME = cfg.https;
           forceSSL = cfg.https;
-          locations = {
-            "/" = { proxyPass = "http://rabbitmq_server"; };
-          };
+          locations = { "/" = { proxyPass = "${proxy_pass}"; }; };
         };
       };
     };
