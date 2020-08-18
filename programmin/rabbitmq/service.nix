@@ -47,13 +47,7 @@ in {
           enableACME = cfg.https;
           forceSSL = cfg.https;
           locations = {
-            "/" = {
-              extraConfig = ''
-                proxy_set_header "X-Real-Ip" "$remote_addr";
-                proxy_set_header "Host" "$host";
-              '';
-              proxyPass = "http://rabbitmq_server";
-            };
+            "/" = { proxyPass = "http://rabbitmq_server"; };
           };
         };
       };
