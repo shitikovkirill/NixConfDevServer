@@ -1,19 +1,10 @@
 { config, pkgs, ... }:
 let vars = import ../../variables.nix;
 in with vars; {
-  networking = {
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 80 443 3080 ];
-    };
-  };
+  imports = [ ./service.nix ];
 
-  services.hydra = {
+  services.devHydra = {
     enable = true;
-    port = 3080;
-    hydraURL = "http://localhost:3080";
-    notificationSender = "hydra@localhost";
-    buildMachinesFiles = [ ];
-    useSubstitutes = true;
+    domain = "hydra." + mainDomain;
   };
 }
