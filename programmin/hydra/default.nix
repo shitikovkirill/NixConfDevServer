@@ -4,13 +4,13 @@ in with vars; {
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 3000 ];
+      allowedTCPPorts = [ 80 443 3080 ];
     };
   };
 
   services.hydra = {
     enable = true;
-    hydraURL = "http://localhost:3000";
+    hydraURL = "http://localhost:3080";
     notificationSender = "hydra@localhost";
     buildMachinesFiles = [ ];
     useSubstitutes = true;
