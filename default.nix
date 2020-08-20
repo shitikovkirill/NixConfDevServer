@@ -2,6 +2,6 @@
 
 {
 
-  imports = [ ./home-manager ./system ./programmin ];
+  imports = [ ./home-manager ./system ./programmin ./pkgs ];
 }
 
