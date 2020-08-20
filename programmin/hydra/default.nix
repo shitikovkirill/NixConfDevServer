@@ -10,6 +10,7 @@ in with vars; {
 
   services.hydra = {
     enable = true;
+    port = 3080;
     hydraURL = "http://localhost:3080";
     notificationSender = "hydra@localhost";
     buildMachinesFiles = [ ];
