@@ -53,7 +53,7 @@ in {
     services.hydra = {
       enable = true;
       port = 3080;
-      hydraURL = domain;
+      hydraURL = cfg.domain;
       notificationSender = "hydra@localhost";
       buildMachinesFiles = [ ];
       useSubstitutes = true;
