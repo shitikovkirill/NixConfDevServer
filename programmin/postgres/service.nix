@@ -112,8 +112,7 @@ in {
       enable = true;
       localOnly = false;
       connections = {
-        main-db =
-          "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
+        main-db = "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
       };
     };
   };

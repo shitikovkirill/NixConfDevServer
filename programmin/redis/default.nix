@@ -5,7 +5,5 @@ in with vars; {
 
   nixpkgs.config.allowUnsupportedSystem = true;
 
-  services.devRedis = {
-    enable = true;
-  };
+  services.devRedis = { enable = true; };
 }
