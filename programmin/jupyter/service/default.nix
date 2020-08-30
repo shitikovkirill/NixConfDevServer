@@ -38,8 +38,8 @@ let
   };
 
   pika = pkgs.callPackage ../../python/modules/pika {
-    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-    fetchPypi = pkgs.python3Packages.fetchPypi;
+    buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
+    fetchPypi = pkgs.pythonPackages.fetchPypi;
   };
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
