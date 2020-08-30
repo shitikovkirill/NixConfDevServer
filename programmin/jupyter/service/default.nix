@@ -37,6 +37,16 @@ let
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
+  pika = callPackage ../../python/modules/pika {
+    buildPythonPackage = python3Packages.buildPythonPackage;
+    fetchPypi = python3Packages.fetchPypi;
+  };
+
+  iPythonPika = jupyterWith.kernels.iPythonWith {
+    name = "pythonPika";
+    packages = p: with p; [ ipdb pika ];
+  };
+
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
 
   iNix = jupyterWith.kernels.iNixKernel { name = "Nix"; };
