@@ -50,18 +50,22 @@ let
           fetchPypi = p.fetchPypi;
         };
         aiormq =
-          callPackage ../aiormq { inherit buildPythonPackage fetchPypi; };
+          pkgs.callPackage ../aiormq { inherit buildPythonPackage fetchPypi; };
 
-        pamqp = callPackage ../pamqp { inherit buildPythonPackage fetchPypi; };
+        pamqp =
+          pkgs.callPackage ../pamqp { inherit buildPythonPackage fetchPypi; };
 
-        yarl = callPackage ../yarl { inherit buildPythonPackage fetchPypi; };
+        yarl =
+          pkgs.callPackage ../yarl { inherit buildPythonPackage fetchPypi; };
 
-        multidict =
-          callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
+        multidict = pkgs.callPackage ../multidict {
+          inherit buildPythonPackage fetchPypi;
+        };
 
-        idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
+        idna =
+          pkgs.callPackage ../idna { inherit buildPythonPackage fetchPypi; };
 
-        typing-extensions = callPackage ../typing-extensions {
+        typing-extensions = pkgs.callPackage ../typing-extensions {
           inherit buildPythonPackage fetchPypi;
         };
       in [ pika aio-pika aiormq yarl pamqp multidict idna typing-extensions ];
