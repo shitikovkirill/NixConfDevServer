@@ -37,7 +37,7 @@ let
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
-  pika = lib.callPackage ../../python/modules/pika {
+  pika = pkgs.callPackage ../../python/modules/pika {
     buildPythonPackage = python3Packages.buildPythonPackage;
     fetchPypi = python3Packages.fetchPypi;
   };
