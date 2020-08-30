@@ -39,12 +39,17 @@ let
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
     name = "pythonPika";
-    packages = p: let
-      pika = pkgs.callPackage ../../python/modules/pika {
-        buildPythonPackage = p.buildPythonPackage;
-        fetchPypi = p.fetchPypi;
-      };
-     in [ pika ];
+    packages = p:
+      let
+        pika = pkgs.callPackage ../../python/modules/pika {
+          buildPythonPackage = p.buildPythonPackage;
+          fetchPypi = p.fetchPypi;
+        };
+        aio-pika = pkgs.callPackage ../../python/modules/aio-pika {
+          buildPythonPackage = p.buildPythonPackage;
+          fetchPypi = p.fetchPypi;
+        };
+      in [ pika aio-pika ];
   };
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };

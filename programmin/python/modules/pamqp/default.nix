@@ -12,8 +12,9 @@ buildPythonPackage rec {
   doCheck = false;
 
   meta = with lib; {
-    homepage = https://pika.readthedocs.io/en/stable/;
-    description = "Pika is a pure-Python implementation of the AMQP 0-9-1 protocol";
+    homepage = "https://pika.readthedocs.io/en/stable/";
+    description =
+      "Pika is a pure-Python implementation of the AMQP 0-9-1 protocol";
     license = licenses.bsd3;
     maintainers = with maintainers; [ kirill ];
   };
