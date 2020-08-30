@@ -16,7 +16,8 @@ buildPythonPackage rec {
       callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
 
     idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
-  in [ multidict idna ];
+    typing-extensions = callPackage ../typing-extensions { inherit buildPythonPackage fetchPypi; };
+  in [ multidict idna typing-extensions ];
 
   meta = with lib; {
     homepage = "https://pypi.org/project/yarl/";

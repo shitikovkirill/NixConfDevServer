@@ -20,7 +20,9 @@ buildPythonPackage rec {
       callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
 
     idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
-  in [ aiormq yarl pamqp multidict idna ];
+
+    typing-extensions = callPackage ../typing-extensions { inherit buildPythonPackage fetchPypi; };
+  in [ aiormq yarl pamqp multidict idna typing-extensions ];
 
   meta = with lib; {
     homepage = "https://aio-pika.readthedocs.io/en/latest/index.html";
