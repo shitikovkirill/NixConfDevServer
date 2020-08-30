@@ -60,6 +60,7 @@ let
       iPythonDataScience
       iPythonAsync
       iPythonSql
+      iPythonPika
       gophernotes
       iNix
       # iJavascript
