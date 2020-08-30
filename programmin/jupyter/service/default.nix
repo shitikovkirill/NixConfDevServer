@@ -41,8 +41,8 @@ let
     name = "pythonPika";
     packages = p: let
       pika = pkgs.callPackage ../../python/modules/pika {
-        buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
-        fetchPypi = pkgs.pythonPackages.fetchPypi;
+        buildPythonPackage = p.buildPythonPackage;
+        fetchPypi = p.fetchPypi;
       };
      in [ pika ];
   };
