@@ -18,7 +18,9 @@ buildPythonPackage rec {
       callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
 
     idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
-    typing-extensions = callPackage ../typing-extensions { inherit buildPythonPackage fetchPypi; };
+    typing-extensions = callPackage ../typing-extensions {
+      inherit buildPythonPackage fetchPypi;
+    };
   in [ pamqp yarl multidict idna typing-extensions ];
 
   doCheck = false;

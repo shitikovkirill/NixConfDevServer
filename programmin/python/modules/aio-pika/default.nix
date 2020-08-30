@@ -21,7 +21,9 @@ buildPythonPackage rec {
 
     idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
 
-    typing-extensions = callPackage ../typing-extensions { inherit buildPythonPackage fetchPypi; };
+    typing-extensions = callPackage ../typing-extensions {
+      inherit buildPythonPackage fetchPypi;
+    };
   in [ aiormq yarl pamqp multidict idna typing-extensions ];
 
   meta = with lib; {
