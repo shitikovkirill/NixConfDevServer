@@ -5,7 +5,8 @@ buildPythonPackage rec {
   version = "3.7.4.3";
 
   src = fetchPypi {
-    inherit pname version;
+    pname = "typing_extensions";
+    inherit version;
     sha256 = "1gqx9avb9nwgiyw5nz08bf99v9b0hvzr1pmqn9wbhd2hnsj6p9w1";
   };
 
