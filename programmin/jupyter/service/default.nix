@@ -44,7 +44,8 @@ let
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
     name = "pythonPika";
-    packages = p: with p; [ ipdb pika ];
+    packages = p: with p; [ ipdb ];
+    extraPackages = p: [ pika ];
   };
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
