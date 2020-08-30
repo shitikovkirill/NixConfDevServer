@@ -37,14 +37,14 @@ let
     packages = p: with p; [ ipdb sqlalchemy ];
   };
 
-  pika = pkgs.callPackage ../../python/modules/pika {
-    buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
-    fetchPypi = pkgs.pythonPackages.fetchPypi;
-  };
-
   iPythonPika = jupyterWith.kernels.iPythonWith {
     name = "pythonPika";
-    packages = p: with p; [ pika ];
+    packages = p: let
+      pika = pkgs.callPackage ../../python/modules/pika {
+        buildPythonPackage = pkgs.pythonPackages.buildPythonPackage;
+        fetchPypi = pkgs.pythonPackages.fetchPypi;
+      };
+     in [ pika ];
   };
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
