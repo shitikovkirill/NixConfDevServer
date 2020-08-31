@@ -9,22 +9,9 @@ buildPythonPackage rec {
     sha256 = "0rpq47g5xpg1gsnfdqbwf4qn57llrm31hdr7q4dzhyrwbfwbxjy4";
   };
 
-  buildInputs = let
+  propagatedBuildInputs = let
     aiormq = callPackage ../aiormq { inherit buildPythonPackage fetchPypi; };
-
-    pamqp = callPackage ../pamqp { inherit buildPythonPackage fetchPypi; };
-
-    yarl = callPackage ../yarl { inherit buildPythonPackage fetchPypi; };
-
-    multidict =
-      callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
-
-    idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
-
-    typing-extensions = callPackage ../typing-extensions {
-      inherit buildPythonPackage fetchPypi;
-    };
-  in [ aiormq yarl pamqp multidict idna typing-extensions ];
+  in [ aiormq ];
 
   meta = with lib; {
     homepage = "https://aio-pika.readthedocs.io/en/latest/index.html";

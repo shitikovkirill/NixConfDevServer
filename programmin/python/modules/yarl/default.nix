@@ -11,7 +11,7 @@ buildPythonPackage rec {
 
   doCheck = false;
 
-  buildInputs = let
+  propagatedBuildInputs = let
     multidict =
       callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
 

@@ -9,19 +9,11 @@ buildPythonPackage rec {
     sha256 = "1jcmrily67is933a71rjbdngh00fr2mfhn3bqkv1m77i6sl9arhh";
   };
 
-  buildInputs = let
+  propagatedBuildInputs = let
     pamqp = callPackage ../pamqp { inherit buildPythonPackage fetchPypi; };
 
     yarl = callPackage ../yarl { inherit buildPythonPackage fetchPypi; };
-
-    multidict =
-      callPackage ../multidict { inherit buildPythonPackage fetchPypi; };
-
-    idna = callPackage ../idna { inherit buildPythonPackage fetchPypi; };
-    typing-extensions = callPackage ../typing-extensions {
-      inherit buildPythonPackage fetchPypi;
-    };
-  in [ pamqp yarl multidict idna typing-extensions ];
+  in [ pamqp yarl ];
 
   doCheck = false;
 

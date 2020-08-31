@@ -49,37 +49,7 @@ let
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
-        aiormq = pkgs.callPackage ../../python/modules/aiormq {
-          buildPythonPackage = p.buildPythonPackage;
-          fetchPypi = p.fetchPypi;
-        };
-
-        pamqp = pkgs.callPackage ../../python/modules/pamqp {
-          buildPythonPackage = p.buildPythonPackage;
-          fetchPypi = p.fetchPypi;
-        };
-
-        yarl = pkgs.callPackage ../../python/modules/yarl {
-          buildPythonPackage = p.buildPythonPackage;
-          fetchPypi = p.fetchPypi;
-        };
-
-        multidict = pkgs.callPackage ../../python/modules/multidict {
-          buildPythonPackage = p.buildPythonPackage;
-          fetchPypi = p.fetchPypi;
-        };
-
-        idna = pkgs.callPackage ../../python/modules/idna {
-          buildPythonPackage = p.buildPythonPackage;
-          fetchPypi = p.fetchPypi;
-        };
-
-        typing-extensions =
-          pkgs.callPackage ../../python/modules/typing-extensions {
-            buildPythonPackage = p.buildPythonPackage;
-            fetchPypi = p.fetchPypi;
-          };
-      in [ pika aio-pika aiormq yarl pamqp multidict idna typing-extensions ];
+      in [ pika aio-pika ];
   };
 
   gophernotes = jupyterWith.kernels.gophernotes { name = "Go"; };
