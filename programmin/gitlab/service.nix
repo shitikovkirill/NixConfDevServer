@@ -25,7 +25,7 @@ in {
 
       secretPath = mkOption {
         type = types.path;
-        default = "./secrets-example";
+        default = ./secrets-example;
         description = ''
           Secrets example files
         '';
