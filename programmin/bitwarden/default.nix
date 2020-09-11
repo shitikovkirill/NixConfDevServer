@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let secrets = import ../../secrets/bitwarden/secrets.nix;
-in {
+let vars = import ../../variables.nix;
+in with vars; {
   imports = [ ./service.nix ];
 
   services.devBitwarden = {
