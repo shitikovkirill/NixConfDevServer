@@ -47,6 +47,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.config.allowUnfree = true;
 
     services.nginx = {
       enable = true;
