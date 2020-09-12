@@ -6,5 +6,6 @@ in with vars; {
   services.devElk = {
     enable = true;
     domain = "elk." + mainDomain;
+    systemdUnits = [ "nginx" ]
   };
 }
