@@ -10,5 +10,6 @@
     ./redis
     ./hydra
     ./gitlab
+    ./logging
   ];
 }
