@@ -97,7 +97,6 @@ in {
 
     services.kibana = {
       enable = true;
-      listenAddress = "0.0.0.0";
       extraConf = {
         xpack.infra.sources.default.fields.message = [ "MESSAGE" ];
       };
