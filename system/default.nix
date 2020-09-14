@@ -18,6 +18,8 @@
 
   services.clearLogs = { enable = true; };
 
+  services.logrotate.enable = true;
+
   imports = [
     ./users.nix
     ./network.nix
