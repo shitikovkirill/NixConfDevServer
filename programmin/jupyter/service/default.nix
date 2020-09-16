@@ -34,7 +34,13 @@ let
 
   iPythonSql = jupyterWith.kernels.iPythonWith {
     name = "pythonSqlalchemy";
-    packages = p: with p; [ ipdb sqlalchemy psycopg2 ];
+    packages = p:
+      let
+        tabulate = pkgs.callPackage ../../python/modules/tabulate {
+          buildPythonPackage = p.buildPythonPackage;
+          fetchPypi = p.fetchPypi;
+        };
+      in with p; [ ipdb sqlalchemy psycopg2 tabulate ];
   };
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
