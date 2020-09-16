@@ -34,7 +34,7 @@ let
 
   iPythonSql = jupyterWith.kernels.iPythonWith {
     name = "pythonSqlalchemy";
-    packages = p: with p; [ ipdb sqlalchemy ];
+    packages = p: with p; [ ipdb sqlalchemy psycopg2 ];
   };
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
