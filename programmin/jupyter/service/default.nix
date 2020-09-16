@@ -40,7 +40,7 @@ let
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
-      in with p; [ ipdb sqlalchemy psycopg2 tabulate Faker ];
+      in with p; [ ipdb sqlalchemy psycopg2 tabulate faker ];
   };
 
   iPythonPika = jupyterWith.kernels.iPythonWith {
