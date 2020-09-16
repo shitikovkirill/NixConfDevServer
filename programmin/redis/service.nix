@@ -32,7 +32,7 @@ in {
       bind = "0.0.0.0";
     };
 
-    docker-containers = {
+    virtualisation.oci-containers = {
       redis_admin = {
         image = "vieux/redmon";
         extraDockerOptions = [ "--network=host" ];
