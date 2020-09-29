@@ -179,7 +179,7 @@ in {
         description = "JupyterLab server";
 
         after = [ "network.target" ];
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "multi-user.target" "nginx.service" ];
 
         path = [ pkgs.bash ];
 
