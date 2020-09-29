@@ -178,7 +178,8 @@ in {
       systemd.services.jupyterlab = {
         description = "JupyterLab server";
 
-        after = [ "network.target" "nginx.service" ];
+        after = [ "network.target" ];
+        before = [ "nginx.service" ];
         wantedBy = [ "multi-user.target" ];
 
         path = [ pkgs.bash ];
