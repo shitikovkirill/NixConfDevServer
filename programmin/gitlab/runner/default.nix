@@ -2,7 +2,10 @@
 {
   services.gitlab-runner = {
     enable = true;
-    services.local.registrationConfigFile = ./registrationSecret;
+    services.local = {
+      executor = "shell";
+      registrationConfigFile = ./registrationSecret;
+    };
   };
 
   networking.hosts = { "127.0.0.1" = [ "gitlab.server" ]; };
