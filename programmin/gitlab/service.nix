@@ -54,6 +54,10 @@ in {
         locations."/".proxyPass =
           "http://unix:/run/gitlab/gitlab-workhorse.socket";
       };
+      virtualHosts."127.0.0.1" = {
+        locations."/".proxyPass =
+          "http://unix:/run/gitlab/gitlab-workhorse.socket";
+      };
     };
 
     services.gitlab = {
