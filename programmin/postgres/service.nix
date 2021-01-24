@@ -10,7 +10,7 @@ in {
       enable = mkOption {
         default = false;
         description = ''
-          Enable sentry.
+          Enable postgres db.
         '';
       };
 
@@ -101,7 +101,7 @@ in {
           "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
         };
       }];
-      initialScript = pkgs.writeText "sentryDbInitScript" ''
+      initialScript = pkgs.writeText "dbInitScript" ''
         CREATE ROLE ${cfg.database.user} WITH LOGIN PASSWORD '${cfg.database.password}' CREATEDB;
         CREATE DATABASE ${cfg.database.user};
         GRANT ALL PRIVILEGES ON DATABASE ${cfg.database.user} TO ${cfg.database.user};
