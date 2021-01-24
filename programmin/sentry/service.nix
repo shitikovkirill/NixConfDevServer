@@ -51,6 +51,13 @@ in {
         '';
       };
 
+      https = mkOption {
+        default = false;
+        description = ''
+          Enable https.
+        '';
+      };
+
       secretKey = mkOption {
         type = types.str;
         example = "xxxxxxxx";
@@ -83,8 +90,8 @@ in {
       statusPage = true;
       recommendedGzipSettings = true;
       virtualHosts."${cfg.domain}" = {
-        enableACME = true;
-        forceSSL = true;
+        enableACME = https;
+        forceSSL = https;
         locations = { "/" = { proxyPass = "http://${proxyPass}"; }; };
       };
     };
