@@ -96,7 +96,7 @@ in {
       };
     };
 
-    docker-containers = {
+    virtualisation.oci-containers.containers = {
       sentry_web = {
         image = "sentry";
         extraDockerOptions = [ "--network=host" ];
