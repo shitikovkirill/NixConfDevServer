@@ -1,4 +1,5 @@
 { config, lib, pkgs, ... }:
+with lib;
 let
   cfg = config.services.keeweb;
   proxyPass = "127.0.0.1:8443";
