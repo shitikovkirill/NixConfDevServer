@@ -13,7 +13,7 @@ in with vars; {
 
   services.keeweb = {
     enable = true;
-    domain = "sentry." + mainDomain;
+    domain = "keeweb." + mainDomain;
     email = "test@gmail.com";
   };
 }
