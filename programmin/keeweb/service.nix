@@ -52,7 +52,8 @@ in {
       recommendedGzipSettings = true;
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
-        forceSSL = cfg.https;
+        forceSSL = true;
+        addSSL = true;
         locations = { "/" = { proxyPass = "https://${proxyPass}"; }; };
       };
     };
