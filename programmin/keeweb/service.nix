@@ -53,7 +53,6 @@ in {
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = true;
-        addSSL = true;
         locations = { "/" = { proxyPass = "https://${proxyPass}"; }; };
       };
     };
