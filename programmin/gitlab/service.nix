@@ -60,6 +60,8 @@ in {
       };
     };
 
+    networking.hosts = ({ "127.0.0.1" = [ cfg.domain ]; });
+
     services.gitlab = {
       enable = true;
       databasePasswordFile = "${cfg.secretPath}/db_password";
