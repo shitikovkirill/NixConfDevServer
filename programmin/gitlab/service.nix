@@ -90,6 +90,8 @@ in {
           email_reply_to = "gitlab-no-reply@${cfg.domain}";
           default_projects_features = { builds = false; };
         };
+        sidekiq.concurrency = 1;
+        unicorn.worker_processes = 1;
       };
     };
   };
