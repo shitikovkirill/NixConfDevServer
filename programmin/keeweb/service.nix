@@ -3,6 +3,14 @@ with lib;
 let
   cfg = config.services.keeweb;
   proxyPass = "127.0.0.1:8443";
+
+  certificate = (if cfg.https then
+    { }
+  else {
+    sslCertificate = ./cert/keeweb.server.crt;
+    sslCertificateKey = ./cert/keeweb.server.key;
+  });
+
 in {
 
   options = {
@@ -56,7 +64,7 @@ in {
         sslCertificate = ./cert/keeweb.server.crt;
         sslCertificateKey = ./cert/keeweb.server.key;
         locations = { "/" = { proxyPass = "https://${proxyPass}"; }; };
-      };
+      } // certificate;
     };
 
     virtualisation.oci-containers.containers = {
