@@ -92,6 +92,12 @@ in {
         };
         monitoring = { sidekiq_exporter = { enable = false; }; };
       };
+      extraGitlabRb = ''
+        sidekiq['concurrency'] = 1
+        unicorn['worker_processes'] = 1
+        prometheus_monitoring['enable'] = false
+        postgresql['shared_buffers'] = "256MB"
+      '';
     };
   };
 }
