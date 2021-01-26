@@ -61,8 +61,6 @@ in {
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
         forceSSL = true;
-        sslCertificate = ./cert/keeweb.server.crt;
-        sslCertificateKey = ./cert/keeweb.server.key;
         locations = { "/" = { proxyPass = "https://${proxyPass}"; }; };
       } // certificate;
     };
