@@ -54,7 +54,7 @@ in {
         enableACME = cfg.https;
         forceSSL = true;
         sslCertificate = ./cert/keeweb.server.crt;
-        sslCertificateKay = ./cert/keeweb.server.key;
+        sslCertificateKey = ./cert/keeweb.server.key;
         locations = { "/" = { proxyPass = "https://${proxyPass}"; }; };
       };
     };
