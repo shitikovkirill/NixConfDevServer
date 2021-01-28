@@ -1,5 +1,4 @@
-let
-  secrets = import ./load-secrets.nix;
+let secrets = import ./load-secrets.nix;
 in {
   environment.variables = {
     GITHUB_TOKEN = secrets.github_token;

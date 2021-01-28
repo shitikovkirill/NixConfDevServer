@@ -14,6 +14,33 @@ in {
           Enable thinklocal web service.
         '';
       };
+
+      domain = mkOption {
+        type = types.str;
+        description = "domain";
+      };
+
+      https = mkOption {
+        default = false;
+        description = ''
+          Enable https.
+        '';
+      };
+
+      auth = mkOption {
+        type = types.attrsOf types.str;
+        default = { };
+        example = literalExample ''
+          {
+            user = "password";
+          };
+        '';
+        description = ''
+          Basic Auth protection for a vhost.
+          WARNING: This is implemented to store the password in plain text in the
+          nix store.
+        '';
+      };
     };
   };
 
@@ -22,7 +49,33 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 80 443 4567 ];
+        allowedTCPPorts = [ 80 443 ];
+      };
+    };
+
+    services.nginx = {
+      enable = true;
+      recommendedGzipSettings = true;
+
+      upstreams = {
+        "redis_admin_server" = { servers = { "127.0.0.1:4567" = { }; }; };
+      };
+
+      virtualHosts = {
+        "${cfg.domain}" = {
+          enableACME = cfg.https;
+          forceSSL = cfg.https;
+          basicAuth = cfg.auth;
+          locations = {
+            "/" = {
+              extraConfig = ''
+                proxy_set_header "X-Real-Ip" "$remote_addr";
+                proxy_set_header "Host" "$host";
+              '';
+              proxyPass = "http://redis_admin_server";
+            };
+          };
+        };
       };
     };
 
