@@ -10,7 +10,7 @@ in {
       registrationConfigFile = ./registrationSecret;
       tagList = [ "nix-shell" ];
     };
-    extraPackages =  cicd_pkgs;
+    extraPackages = cicd_pkgs;
   };
 
   environment.systemPackages = cicd_pkgs;
