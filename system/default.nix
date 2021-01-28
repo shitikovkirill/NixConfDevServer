@@ -26,5 +26,6 @@
     ./aliases.nix
     ./programs.nix
     ./clear_logs/service.nix
+    ./envvar.nix
   ];
 }
