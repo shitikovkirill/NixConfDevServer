@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let cicd_pkgs = [ git git-crypt nixops ];
+let cicd_pkgs = with pkgs; [ git git-crypt nixops ];
 in {
   services.gitlab-runner = {
     enable = true;
@@ -10,10 +10,10 @@ in {
       registrationConfigFile = ./registrationSecret;
       tagList = [ "nix-shell" ];
     };
-    extraPackages = with pkgs; cicd_pkgs;
+    extraPackages =  cicd_pkgs;
   };
 
-  environment.systemPackages = with pkgs; cicd_pkgs;
+  environment.systemPackages = cicd_pkgs;
 
   programs.ssh.extraConfig = "StrictHostKeyChecking=no";
 
