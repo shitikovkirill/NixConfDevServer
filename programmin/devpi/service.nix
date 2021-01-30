@@ -5,7 +5,15 @@ with lib;
 let
   cfg = config.services.devpi;
 
+  proxyPass = "127.0.0.1:3141";
   devpiEnv = { DEVPI_PASSWORD = "changemetoyourlongsecret"; };
+
+  certificate = (if cfg.https then
+    { }
+  else {
+    sslCertificate = ./cert/devpi.server.crt;
+    sslCertificateKey = ./cert/devpi.server.key;
+  });
 in {
 
   options = {
@@ -86,10 +94,10 @@ in {
       recommendedGzipSettings = true;
       virtualHosts."${cfg.domain}" = {
         enableACME = cfg.https;
-        addSSL = cfg.https;
+        forceSSL = true;
         basicAuth = cfg.auth;
-        locations = { "/" = { proxyPass = "http://127.0.0.1:3141"; }; };
-      };
+        locations = { "/" = { proxyPass = "http://${proxyPass}"; }; };
+      } // certificate;
     };
 
     virtualisation.oci-containers.containers = {
