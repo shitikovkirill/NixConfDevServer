@@ -86,7 +86,7 @@ in {
           locations = {
              "/" = {
                 index = "index.php index.html index.htm";
-                tryFiles = "$uri =404";
+                tryFiles = "$uri /index.php$is_args$args =404";
              };
           };
         };
