@@ -108,7 +108,7 @@ in {
       '';
     };
     virtualisation.oci-containers.containers = {
-      keeweb = {
+      phpmyadmin = {
         image = "phpmyadmin";
         ports = [ "8081:80" ];
         extraDockerOptions = [ "--network=host" ];
