@@ -3,8 +3,9 @@
 with lib;
 
 let
-    cfg = config.services.devMysql;
-    phpmyadmin = import ./phpmyadmin {};
+  cfg = config.services.devMysql;
+  phpmyadmin = import ./phpmyadmin { };
+  fastcgiPass = "127.0.0.1:9000";
 in {
 
   options = {
@@ -84,14 +85,24 @@ in {
           basicAuth = cfg.auth;
           root = phpmyadmin;
           locations = {
-             "/" = {
-                index = "index.php index.html index.htm";
-                tryFiles = "$uri /index.php$is_args$args =404";
-             };
+            "/" = {
+              index = "index.php index.html index.htm";
+              tryFiles = "$uri /index.php$is_args$args =404";
+            };
+            "~ ^/(.*\.php)".extraConfig = ''
+              fastcgi_pass ${fastcgiPass};
+              fastcgi_index index.php;
+              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+              include ${pkgs.nginx}/conf/fastcgi_params;
+              include ${pkgs.nginx}/conf/fastcgi.conf;
+            '';
           };
         };
       };
     };
+
+    services.phpfpm.pools = { phpmyadmin = { listen = fastcgiPass; }; };
 
     services.mysql = {
       enable = true;
