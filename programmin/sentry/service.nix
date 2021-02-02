@@ -99,7 +99,7 @@ in {
     virtualisation.oci-containers.containers = {
       sentry_web = {
         image = "sentry";
-        extraDockerOptions = [ "--network=host" ];
+        extraOptions = [ "--network=host" ];
         environment = sentryEnv;
       };
       sentry_worker = {
