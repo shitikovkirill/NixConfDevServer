@@ -36,7 +36,7 @@ let
     name = "pythonSqlalchemy";
     packages = p:
       let
-        tabulate = pkgs.callPackage ../../python/modules/tabulate {
+        tabulate = pkgs.callPackage ../../languages/python/modules/tabulate {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
@@ -47,11 +47,11 @@ let
     name = "pythonPika";
     packages = p:
       let
-        pika = pkgs.callPackage ../../python/modules/pika {
+        pika = pkgs.callPackage ../../languages/python/modules/pika {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
-        aio-pika = pkgs.callPackage ../../python/modules/aio-pika {
+        aio-pika = pkgs.callPackage ../../languages/python/modules/aio-pika {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
