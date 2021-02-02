@@ -88,15 +88,16 @@ in {
             "/" = {
               index = "index.php index.html index.htm";
               tryFiles = "$uri /index.php$is_args$args =404";
-            };
-            "~ ^/(.*.php)".extraConfig = ''
-              fastcgi_pass ${fastcgiPass};
+              extraConfig = ''
+              fastcgi_split_path_info ^(.+\.php)(/.+)$;
+              fastcgi_pass unix:${config.services.phpfpm.pools.phpmyadmin.socket};
               fastcgi_index index.php;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
               include ${pkgs.nginx}/conf/fastcgi_params;
               include ${pkgs.nginx}/conf/fastcgi.conf;
             '';
+            };
           };
         };
       };
@@ -105,7 +106,6 @@ in {
     services.phpfpm.pools = {
       phpmyadmin = {
         user = config.services.nginx.user;
-        listen = fastcgiPass;
       };
     };
 
