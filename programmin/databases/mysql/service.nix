@@ -2,7 +2,9 @@
 
 with lib;
 
-let cfg = config.services.devMysql;
+let
+    cfg = config.services.devMysql;
+    phpmyadmin = import ./phpmyadmin;
 in {
 
   options = {
@@ -80,14 +82,10 @@ in {
           enableACME = cfg.https;
           forceSSL = cfg.https;
           basicAuth = cfg.auth;
+          index = "index.php index.html index.htm";
+          root = phpmyadmin;
           locations = {
-            "/" = {
-              extraConfig = ''
-                proxy_set_header "X-Real-Ip" "$remote_addr";
-                proxy_set_header "Host" "$host";
-              '';
-              proxyPass = "http://mysql_admin_server";
-            };
+             "/".tryFiles = "$uri =404";
           };
         };
       };
@@ -107,15 +105,6 @@ in {
         CREATE DATABASE ${cfg.database.user};
       '';
     };
-    virtualisation.oci-containers.containers = {
-      phpmyadmin = {
-        image = "phpmyadmin";
-        ports = [ "8081:80" ];
-        environment = {
-          MYSQL_USER = cfg.database.user;
-          MYSQL_PASSWORD = cfg.database.password;
-        };
-      };
-    };
+
   };
 }

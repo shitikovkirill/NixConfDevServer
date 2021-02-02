@@ -8,6 +8,6 @@ in with vars; {
     enable = true;
     domain = "mysql." + mainDomain;
     database = { user = "kirill"; };
-    databases = ["sessionglobal" "test_sessionglobal"];
+    databases = [ "sessionglobal" "test_sessionglobal" ];
   };
 }
