@@ -101,7 +101,7 @@ in {
     };
 
     services.phpfpm.pools = {
-      phpmyadmin = {
+      ${app} = {
         user = app;
         listen = fastcgiPass;
 
