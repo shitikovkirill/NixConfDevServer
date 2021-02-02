@@ -82,10 +82,12 @@ in {
           enableACME = cfg.https;
           forceSSL = cfg.https;
           basicAuth = cfg.auth;
-          index = "index.php index.html index.htm";
           root = phpmyadmin;
           locations = {
-             "/".tryFiles = "$uri =404";
+             "/" = {
+                index = "index.php index.html index.htm";
+                tryFiles = "$uri =404";
+             }
           };
         };
       };
