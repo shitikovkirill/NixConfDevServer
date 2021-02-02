@@ -90,7 +90,7 @@ in {
               tryFiles = "$uri /index.php$is_args$args =404";
               extraConfig = ''
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
-              fastcgi_pass unix:${config.services.phpfpm.pools.phpmyadmin.socket};
+              fastcgi_pass ${fastcgiPass};
               fastcgi_index index.php;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
@@ -106,6 +106,7 @@ in {
     services.phpfpm.pools = {
       phpmyadmin = {
         user = config.services.nginx.user;
+        listen = fastcgiPass;
       };
     };
 
