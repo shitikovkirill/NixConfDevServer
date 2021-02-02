@@ -111,7 +111,6 @@ in {
       phpmyadmin = {
         image = "phpmyadmin";
         ports = [ "8081:80" ];
-        extraOptions = [ "--network=host" ];
         environment = {
           MYSQL_USER = cfg.database.user;
           MYSQL_PASSWORD = cfg.database.password;
