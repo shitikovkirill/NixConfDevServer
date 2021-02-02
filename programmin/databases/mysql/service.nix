@@ -6,6 +6,7 @@ let
   cfg = config.services.devMysql;
   phpmyadmin = import ./phpmyadmin { };
   fastcgiPass = "127.0.0.1:9000";
+  app = "phpmyadmin";
 in {
 
   options = {
@@ -74,10 +75,6 @@ in {
       enable = true;
       recommendedGzipSettings = true;
 
-      upstreams = {
-        "mysql_admin_server" = { servers = { "127.0.0.1:8081" = { }; }; };
-      };
-
       virtualHosts = {
         "${cfg.domain}" = {
           enableACME = cfg.https;
@@ -89,14 +86,14 @@ in {
               index = "index.php index.html index.htm";
               tryFiles = "$uri /index.php$is_args$args =404";
               extraConfig = ''
-              fastcgi_split_path_info ^(.+\.php)(/.+)$;
-              fastcgi_pass ${fastcgiPass};
-              fastcgi_index index.php;
-              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass ${fastcgiPass};
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-              include ${pkgs.nginx}/conf/fastcgi_params;
-              include ${pkgs.nginx}/conf/fastcgi.conf;
-            '';
+                include ${pkgs.nginx}/conf/fastcgi_params;
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+              '';
             };
           };
         };
@@ -105,8 +102,27 @@ in {
 
     services.phpfpm.pools = {
       phpmyadmin = {
-        user = config.services.nginx.user;
+        user = app;
         listen = fastcgiPass;
+
+        settings = {
+          "listen.owner" = config.services.nginx.user;
+          "pm" = "dynamic";
+          "pm.max_children" = 75;
+          "pm.start_servers" = 10;
+          "pm.min_spare_servers" = 5;
+          "pm.max_spare_servers" = 20;
+          "pm.max_requests" = 500;
+        };
+      };
+    };
+
+    users.groups = { ${app} = { }; };
+
+    users.users = {
+      ${app} = {
+        group = app;
+        isSystemUser = true;
       };
     };
 
