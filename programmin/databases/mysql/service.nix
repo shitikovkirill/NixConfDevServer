@@ -4,7 +4,7 @@ with lib;
 
 let
     cfg = config.services.devMysql;
-    phpmyadmin = import ./phpmyadmin;
+    phpmyadmin = import ./phpmyadmin {};
 in {
 
   options = {
