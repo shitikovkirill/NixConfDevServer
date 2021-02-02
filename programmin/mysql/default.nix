@@ -4,7 +4,7 @@ let vars = import ../../variables.nix;
 in with vars; {
   imports = [ ./service.nix ];
 
-  services.devPostgres = {
+  services.devMysql = {
     enable = true;
     domain = "mysql." + mainDomain;
     database = { user = "kirill"; };

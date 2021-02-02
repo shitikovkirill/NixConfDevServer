@@ -2,11 +2,11 @@
 
 with lib;
 
-let cfg = config.services.devPostgres;
+let cfg = config.services.devMysql;
 in {
 
   options = {
-    services.devPostgres = {
+    services.devMysql = {
       enable = mkOption {
         default = false;
         description = ''
