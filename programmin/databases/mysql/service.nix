@@ -87,7 +87,7 @@ in {
              "/" = {
                 index = "index.php index.html index.htm";
                 tryFiles = "$uri =404";
-             }
+             };
           };
         };
       };
