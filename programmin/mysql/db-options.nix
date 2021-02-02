@@ -4,8 +4,8 @@ in {
   port = mkOption {
     type = types.int;
     description = "Database port.";
-    default = 5432;
-    defaultText = "5432";
+    default = 3306;
+    defaultText = "3306";
   };
 
   user = mkOption {
