@@ -89,7 +89,7 @@ in {
               index = "index.php index.html index.htm";
               tryFiles = "$uri /index.php$is_args$args =404";
             };
-            "~ ^/(.*\.php)".extraConfig = ''
+            "~ ^/(.*.php)".extraConfig = ''
               fastcgi_pass ${fastcgiPass};
               fastcgi_index index.php;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -102,7 +102,12 @@ in {
       };
     };
 
-    services.phpfpm.pools = { phpmyadmin = { listen = fastcgiPass; }; };
+    services.phpfpm.pools = {
+      phpmyadmin = {
+        user = config.services.nginx.user;
+        listen = fastcgiPass;
+      };
+    };
 
     services.mysql = {
       enable = true;
