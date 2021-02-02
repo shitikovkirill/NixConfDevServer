@@ -96,7 +96,7 @@ in {
     services.mysql = {
       enable = true;
       package = pkgs.mysql;
-      ensureDatabases = [ cfg.database.user ] + cfg.databases;
+      ensureDatabases = [ cfg.database.user ] ++ cfg.databases;
       ensureUsers = [{
         name = cfg.database.user;
         ensurePermissions = { "*.*" = "ALL PRIVILEGES"; };
