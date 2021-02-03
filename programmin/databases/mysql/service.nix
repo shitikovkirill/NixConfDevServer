@@ -132,11 +132,17 @@ in {
     services.mysql = {
       enable = true;
       package = pkgs.mysql;
-      ensureDatabases = [ cfg.database.user ] ++ cfg.databases;
-      ensureUsers = [{
-        name = cfg.database.user;
-        ensurePermissions = { "*.*" = "ALL PRIVILEGES"; };
-      }];
+      ensureDatabases = [ cfg.database.user app ] ++ cfg.databases;
+      ensureUsers = [
+        {
+          name = cfg.database.user;
+          ensurePermissions = { "*.*" = "ALL PRIVILEGES"; };
+        }
+        {
+          name = app;
+          ensurePermissions = { "*.*" = "ALL PRIVILEGES"; };
+        }
+      ];
       initialScript = pkgs.writeText "dbInitScript" ''
         CREATE USER '${cfg.database.user}'@'%' IDENTIFIED BY '${cfg.database.password}';
         GRANT ALL PRIVILEGES ON *.* TO '${cfg.database.user}'@'%';
