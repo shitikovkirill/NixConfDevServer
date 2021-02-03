@@ -94,6 +94,9 @@ in {
                 include ${pkgs.nginx}/conf/fastcgi_params;
                 include ${pkgs.nginx}/conf/fastcgi.conf;
               '';
+              "~* ^/(.+.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ " = {
+                root = phpmyadmin;
+              };
             };
           };
         };
