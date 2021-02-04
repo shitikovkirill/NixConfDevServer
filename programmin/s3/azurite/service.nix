@@ -16,7 +16,7 @@ in {
       };
       stateDir = mkOption {
         type = types.str;
-        default = "/var/lib/azurite";
+        default = "azurite_blob";
         example = "/data/azurite";
         description = ''
           Set default value for storage
@@ -47,8 +47,5 @@ in {
       group = group;
       isSystemUser = true;
     };
-
-    systemd.tmpfiles.rules =
-      [ "d '${cfg.stateDir}' 0750 ${user} ${group} - -" ];
   };
 }
