@@ -38,6 +38,7 @@ in {
         image = "mcr.microsoft.com/azure-storage/azurite";
         volumes = [ "${cfg.stateDir}:/data" ];
         ports = [ "10000:10000" "10001:10001" ];
+        user = "${user}:${group}";
       };
     };
 
@@ -47,6 +48,7 @@ in {
       isSystemUser = true;
     };
 
-    systemd.tmpfiles.rules = [ "d '${cfg.stateDir}' 0750 docker docker - -" ];
+    systemd.tmpfiles.rules =
+      [ "d '${cfg.stateDir}' 0750 ${user} ${group} - -" ];
   };
 }
