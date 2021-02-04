@@ -68,14 +68,14 @@ let
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
     kernels = [
-      iPythonDataScience
-      iPythonAsync
-      iPythonSql
-      iPythonPika
-      gophernotes
-      iNix
+      #iPythonDataScience
+      #iPythonAsync
+      #iPythonSql
+      #iPythonPika
+      #gophernotes
+      #iNix
       # iJavascript
-      iAnsibleKernel
+      #iAnsibleKernel
     ];
   };
 
