@@ -37,7 +37,7 @@ in {
       azurite = {
         image = "mcr.microsoft.com/azure-storage/azurite";
         volumes = [ "${cfg.stateDir}:/data" ];
-        ports = [ "10000:10000" "10001:10001" ];
+        ports = [ "0.0.0.0:10000:10000" "0.0.0.0:10001:10001" ];
         user = "${user}:${group}";
       };
     };
