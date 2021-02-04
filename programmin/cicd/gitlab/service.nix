@@ -96,7 +96,6 @@ in {
 
     services.dockerRegistry = {
       enable = true;
-      enableRedisCache = true;
     };
   };
 }
