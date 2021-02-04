@@ -94,8 +94,6 @@ in {
       };
     };
 
-    services.dockerRegistry = {
-      enable = true;
-    };
+    services.dockerRegistry = { enable = true; };
   };
 }
