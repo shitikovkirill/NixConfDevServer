@@ -39,7 +39,7 @@ in {
         autoStart = false;
         volumes = [ "${cfg.stateDir}:/data" ];
         ports = [ "0.0.0.0:10000:10000" "0.0.0.0:10001:10001" ];
-        entrypoint = [ "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0" ];
+        entrypoint = "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0";
       };
     };
   };
