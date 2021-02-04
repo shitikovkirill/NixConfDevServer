@@ -9,7 +9,7 @@ let
       owner = "tweag";
       repo = "jupyterWith";
       rev = "35eb565c6d00f3c61ef5e74e7e41870cfa3926f7";
-      sha256 = "0073ddld6m5kqv141gb2aq1dys4sv9vhifgic0w8qqjpm0l24kz1";
+      sha256 = "15zpprs0blvlvbqapkyn92x6dpfa6va2xz25v24z67lqs96ii4jm";
     };
   in import jupyterWithSrc { };
 
