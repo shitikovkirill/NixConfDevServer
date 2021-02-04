@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.azurite;
-
+let
+  cfg = config.services.azurite;
+  group = "azurite";
+  user = "azurite";
 in {
 
   options = {
@@ -37,6 +39,12 @@ in {
         volumes = [ "${cfg.stateDir}:/data" ];
         ports = [ "10000:10000" "10001:10001" ];
       };
+    };
+
+    users.groups.${group} = { };
+    users.users.${user} = {
+      group = group;
+      isSystemUser = true;
     };
 
     systemd.tmpfiles.rules = [ "d '${cfg.stateDir}' 0750 docker docker - -" ];
