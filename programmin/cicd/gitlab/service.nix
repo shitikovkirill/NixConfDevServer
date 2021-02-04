@@ -93,5 +93,10 @@ in {
         monitoring = { sidekiq_exporter = { enable = false; }; };
       };
     };
+
+    services.dockerRegistry = {
+      enable = true;
+      enableRedisCache = true;
+    };
   };
 }
