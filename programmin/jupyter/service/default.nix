@@ -8,8 +8,8 @@ let
     jupyterWithSrc = pkgs.fetchFromGitHub {
       owner = "tweag";
       repo = "jupyterWith";
-      rev = "41ef8935b2a0eb1ee8729fd53cf4b08313541628";
-      sha256 = "0073ddld6m5kqv141gb2aq1dys4sv9vhifgic0w8qqjpm0l24kzf";
+      rev = "35eb565c6d00f3c61ef5e74e7e41870cfa3926f7";
+      sha256 = "0073ddld6m5kqv141gb2aq1dys4sv9vhifgic0w8qqjpm0l24kz1";
     };
   in import jupyterWithSrc { };
 
@@ -68,14 +68,14 @@ let
 
   jupyterlabPackage = lib.makeOverridable jupyterWith.jupyterlabWith {
     kernels = [
-      #iPythonDataScience
-      #iPythonAsync
-      #iPythonSql
-      #iPythonPika
-      #gophernotes
-      #iNix
+      iPythonDataScience
+      iPythonAsync
+      iPythonSql
+      iPythonPika
+      gophernotes
+      iNix
       # iJavascript
-      #iAnsibleKernel
+      iAnsibleKernel
     ];
   };
 
