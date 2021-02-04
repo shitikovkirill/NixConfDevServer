@@ -38,7 +38,7 @@ in {
         image = "mcr.microsoft.com/azure-storage/azurite";
         volumes = [ "${cfg.stateDir}:/data" ];
         ports = [ "0.0.0.0:10000:10000" "0.0.0.0:10001:10001" ];
-        cmd = [ "azurite" "--blobHost 0.0.0.0" ];
+        cmd = [ "azurite" "--blobHost 0.0.0.0" "--queueHost 0.0.0.0" ];
       };
     };
   };
