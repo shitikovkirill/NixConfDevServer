@@ -1,3 +1,3 @@
 { config, lib, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ htop gotop nix-info ];
+  environment.systemPackages = with pkgs; [ htop gotop nix-info python3 ];
 }
