@@ -50,6 +50,13 @@ in {
         '';
         default = { };
       };
+
+      databases = mkOption {
+        default = [ ];
+        description = ''
+          List of databases.
+        '';
+      };
     };
   };
 
@@ -94,7 +101,7 @@ in {
         host all all ::1/128 trust
         host all all 0.0.0.0/0 trust
       '';
-      ensureDatabases = [ cfg.database.user ];
+      ensureDatabases = [ cfg.database.user ] ++ cfg.databases;
       ensureUsers = [{
         name = cfg.database.user;
         ensurePermissions = {
@@ -108,6 +115,7 @@ in {
         ALTER USER ${cfg.database.user} WITH SUPERUSER;
       '';
     };
+
     services.pgmanage = {
       enable = true;
       localOnly = false;
