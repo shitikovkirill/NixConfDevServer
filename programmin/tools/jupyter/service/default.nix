@@ -13,6 +13,8 @@ let
     };
   in import jupyterWithSrc { };
 
+  pythonModulePath = ../../../languages/python/modules;
+
   iPythonDataScience = jupyterWith.kernels.iPythonWith {
     name = "pythonDataScience";
     packages = p:
@@ -36,7 +38,7 @@ let
     name = "pythonSqlalchemy";
     packages = p:
       let
-        tabulate = pkgs.callPackage ../../languages/python/modules/tabulate {
+        tabulate = pkgs.callPackage (pythonModulePath + "/tabulate") {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
@@ -47,11 +49,11 @@ let
     name = "pythonPika";
     packages = p:
       let
-        pika = pkgs.callPackage ../../languages/python/modules/pika {
+        pika = pkgs.callPackage (pythonModulePath + "/pika") {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
-        aio-pika = pkgs.callPackage ../../languages/python/modules/aio-pika {
+        aio-pika = pkgs.callPackage (pythonModulePath + "/aio-pika") {
           buildPythonPackage = p.buildPythonPackage;
           fetchPypi = p.fetchPypi;
         };
