@@ -1,23 +1,11 @@
 { config, pkgs, ... }:
-let cicd_pkgs = with pkgs; [ git git-crypt nixops ];
+let
+  cicd_pkgs = with pkgs; [ git git-crypt nixops ];
+  config = import load-config.nix;
 in {
   services.gitlab-runner = {
     enable = true;
-    services = {
-      local = {
-        executor = "shell";
-        debugTraceDisabled = true;
-        cloneUrl = "http://127.0.0.1";
-        registrationConfigFile = ./registrationSecret;
-        tagList = [ "nix-shell" ];
-      };
-      gitlab = {
-        executor = "shell";
-        debugTraceDisabled = true;
-        registrationConfigFile = ./registrationSecretGitLab;
-        tagList = [ "nix-shell" ];
-      };
-    };
+    services = config.services;
     extraPackages = cicd_pkgs;
   };
 
@@ -25,7 +13,8 @@ in {
 
   programs.ssh.extraConfig = "StrictHostKeyChecking=no";
 
-  systemd.services.gitlab-runner.serviceConfig.DynamicUser =
-    pkgs.lib.mkForce false;
-  systemd.services.gitlab-runner.serviceConfig.User = pkgs.lib.mkForce "root";
+  systemd.services.gitlab-runner.serviceConfig = mkIf config.asRoot {
+    DynamicUser = pkgs.lib.mkForce false;
+    User = pkgs.lib.mkForce "root";
+  };
 }
