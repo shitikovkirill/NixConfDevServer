@@ -3,12 +3,20 @@ let cicd_pkgs = with pkgs; [ git git-crypt nixops ];
 in {
   services.gitlab-runner = {
     enable = true;
-    services.local = {
-      executor = "shell";
-      debugTraceDisabled = true;
-      cloneUrl = "http://127.0.0.1";
-      registrationConfigFile = ./registrationSecret;
-      tagList = [ "nix-shell" ];
+    services = {
+      local = {
+        executor = "shell";
+        debugTraceDisabled = true;
+        cloneUrl = "http://127.0.0.1";
+        registrationConfigFile = ./registrationSecret;
+        tagList = [ "nix-shell" ];
+      };
+      gitlab = {
+        executor = "shell";
+        debugTraceDisabled = true;
+        registrationConfigFile = ./registrationSecretGitLab;
+        tagList = [ "nix-shell" ];
+      };
     };
     extraPackages = cicd_pkgs;
   };
