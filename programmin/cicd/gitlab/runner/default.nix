@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   cicd_pkgs = with pkgs; [ git git-crypt nixops ];
-  config = import load-config.nix;
+  config = import ./load-config.nix;
 in {
   services.gitlab-runner = {
     enable = true;
