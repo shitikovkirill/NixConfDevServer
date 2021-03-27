@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   cicd_pkgs = with pkgs; [ git git-crypt nixops ];
   config = import ./load-config.nix;
