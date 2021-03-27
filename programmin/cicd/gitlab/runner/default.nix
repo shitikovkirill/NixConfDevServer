@@ -13,7 +13,7 @@ in {
 
   programs.ssh.extraConfig = "StrictHostKeyChecking=no";
 
-  systemd.services.gitlab-runner.serviceConfig = mkIf config.asRoot {
+  systemd.services.gitlab-runner.serviceConfig = lib.mkIf config.asRoot {
     DynamicUser = pkgs.lib.mkForce false;
     User = pkgs.lib.mkForce "root";
   };
