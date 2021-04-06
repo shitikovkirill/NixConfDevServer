@@ -90,6 +90,9 @@ in {
           email_reply_to = "gitlab-no-reply@${cfg.domain}";
           default_projects_features = { builds = false; };
         };
+        registry = {
+          enabled = true;
+        };
         monitoring = { sidekiq_exporter = { enable = false; }; };
       };
     };
