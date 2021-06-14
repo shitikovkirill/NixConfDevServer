@@ -27,5 +27,6 @@
     ./programs.nix
     ./clear_logs/service.nix
     ./envvar.nix
+    ./bluetooth.nix
   ];
 }
