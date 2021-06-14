@@ -13,6 +13,8 @@
     };
     zeroconf.publish.enable = true;
     daemon.logLevel = "debug";
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
   };
 
   services.avahi = {
