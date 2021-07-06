@@ -5,11 +5,11 @@
   hardware.pulseaudio = {
     enable = true;
     tcp = {
-        enable = true;
-        anonymousClients = {
-            allowAll = true;
-            allowedIpRanges = [ "127.0.0.1" "192.168.1.0/24" ];
-        };
+      enable = true;
+      anonymousClients = {
+        allowAll = true;
+        allowedIpRanges = [ "127.0.0.1" "192.168.1.0/24" ];
+      };
     };
     zeroconf.publish.enable = true;
     daemon.logLevel = "debug";
@@ -17,13 +17,7 @@
     package = pkgs.pulseaudioFull;
   };
 
-  services.avahi = {
-    enable = true;
-  };
+  services.avahi = { enable = true; };
 
-  networking = {
-    firewall = {
-      allowedTCPPorts = [ 4317 ];
-    };
-  };
+  networking = { firewall = { allowedTCPPorts = [ 4317 ]; }; };
 }

@@ -72,13 +72,10 @@ in {
       portainer = {
         image = "portainer/portainer-ce";
         volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock"
-            "portainer_data:/data"
+          "/var/run/docker.sock:/var/run/docker.sock"
+          "portainer_data:/data"
         ];
-        ports = [
-            "8000:8000"
-            "9000:9000"
-        ];
+        ports = [ "8000:8000" "9000:9000" ];
       };
     };
   };

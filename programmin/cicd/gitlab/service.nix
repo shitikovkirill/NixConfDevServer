@@ -88,11 +88,16 @@ in {
           email_from = "gitlab-no-reply@${cfg.domain}";
           email_display_name = "Example GitLab";
           email_reply_to = "gitlab-no-reply@${cfg.domain}";
-          default_projects_features = { builds = false; };
+          default_projects_features = {
+            issues = false;
+            merge_requests = false;
+            wiki = false;
+            snippets = false;
+            builds = false;
+            container_registry = false;
+          };
         };
-        registry = {
-          enabled = true;
-        };
+        registry = { enabled = true; };
         monitoring = { sidekiq_exporter = { enable = false; }; };
       };
     };
