@@ -2,6 +2,7 @@
 
 {
   services.duplicity = {
+    root = "/home/kirill";
     enable = true;
     include = [
         "/var/lib/jupyterlab"
