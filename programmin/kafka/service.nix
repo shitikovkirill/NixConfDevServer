@@ -14,6 +14,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    networking = {
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ 9092 2181 ];
+      };
+    };
+
     services.apache-kafka.enable = true;
     services.zookeeper.enable = true;
   };
