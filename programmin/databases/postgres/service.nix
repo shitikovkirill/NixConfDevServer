@@ -116,11 +116,25 @@ in {
       '';
     };
 
-    services.pgmanage = {
-      enable = true;
-      localOnly = false;
-      connections = {
-        main-db = "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
+    #services.pgmanage = {
+    #  enable = true;
+    #  localOnly = false;
+    #  logLevel = "info";
+    #  sqlRoot="/tmp/pgmanage";
+    #  connections = {
+    #    main-db = "hostaddr=127.0.0.1 port=5432 dbname=${cfg.database.user}";
+    #  };
+    #};
+
+    virtualisation.oci-containers.containers = {
+      pg_admin = {
+        image = "dpage/pgadmin4";
+        extraOptions = [ "--network=host" ];
+        environment = {
+          PGADMIN_DEFAULT_EMAIL = "postgres@gmail.com";
+          PGADMIN_DEFAULT_PASSWORD = "test";
+          PGADMIN_LISTEN_PORT = "8080";
+        };
       };
     };
   };
