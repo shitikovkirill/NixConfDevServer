@@ -69,11 +69,6 @@ in {
 
     services.nginx = {
       enable = true;
-      recommendedGzipSettings = true;
-
-      upstreams = {
-        "db_admin_server" = { servers = { "127.0.0.1:8081" = { }; }; };
-      };
 
       virtualHosts = {
         "${cfg.domain}" = {
@@ -83,11 +78,10 @@ in {
           locations = {
             "/" = {
               extraConfig = ''
-                proxy_set_header "X-Real-Ip" "$remote_addr";
                 proxy_set_header "Host" "$host";
                 proxy_redirect off;
               '';
-              proxyPass = "http://db_admin_server/";
+              proxyPass = "http://127.0.0.1:8081/";
             };
           };
         };
