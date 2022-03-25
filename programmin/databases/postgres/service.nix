@@ -85,6 +85,7 @@ in {
               extraConfig = ''
                 proxy_set_header "X-Real-Ip" "$remote_addr";
                 proxy_set_header "Host" "$host";
+                proxy_redirect off;
               '';
               proxyPass = "http://db_admin_server/";
             };
