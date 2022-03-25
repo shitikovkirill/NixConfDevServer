@@ -64,7 +64,7 @@ in {
 
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [ cfg.database.port 80 443 ];
+      allowedTCPPorts = [ cfg.database.port 80 443 8081 ];
     };
 
     services.nginx = {
@@ -133,7 +133,7 @@ in {
         environment = {
           PGADMIN_DEFAULT_EMAIL = "postgres@gmail.com";
           PGADMIN_DEFAULT_PASSWORD = "test";
-          PGADMIN_LISTEN_PORT = "8080";
+          PGADMIN_LISTEN_PORT = "8081";
         };
       };
     };
