@@ -86,7 +86,7 @@ in {
                 proxy_set_header "X-Real-Ip" "$remote_addr";
                 proxy_set_header "Host" "$host";
               '';
-              proxyPass = "http://db_admin_server";
+              proxyPass = "http://db_admin_server/";
             };
           };
         };
