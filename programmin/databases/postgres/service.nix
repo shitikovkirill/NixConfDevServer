@@ -64,7 +64,7 @@ in {
 
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [ cfg.database.port 80 443 8081 ];
+      allowedTCPPorts = [ cfg.database.port 80 443 ];
     };
 
     services.nginx = {
