@@ -72,7 +72,7 @@ in {
       recommendedGzipSettings = true;
 
       upstreams = {
-        "db_admin_server" = { servers = { "127.0.0.1:8080" = { }; }; };
+        "db_admin_server" = { servers = { "127.0.0.1:8081" = { }; }; };
       };
 
       virtualHosts = {
