@@ -64,7 +64,7 @@ in {
 
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [ cfg.database.port 80 443 ];
+      allowedTCPPorts = [ cfg.database.port 80 443 8081 ];
     };
 
     services.nginx = {
@@ -79,9 +79,9 @@ in {
             "/" = {
               extraConfig = ''
                 proxy_set_header "Host" "$host";
+                proxy_pass http://localhost:8081/;
                 proxy_redirect off;
               '';
-              proxyPass = "http://127.0.0.1:8081";
             };
           };
         };
