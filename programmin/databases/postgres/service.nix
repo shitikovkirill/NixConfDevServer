@@ -81,7 +81,7 @@ in {
                 proxy_set_header "Host" "$host";
                 proxy_redirect off;
               '';
-              proxyPass = "http://127.0.0.1:8081/";
+              proxyPass = "http://127.0.0.1:8081";
             };
           };
         };
