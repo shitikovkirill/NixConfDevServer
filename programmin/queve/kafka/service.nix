@@ -76,6 +76,7 @@ in {
 
     services.apache-kafka = {
         enable = true;
+        hostname = "0.0.0.0";
     };
     services.zookeeper.enable = true;
 
