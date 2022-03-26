@@ -80,7 +80,7 @@ in {
     services.zookeeper.enable = true;
 
     virtualisation.oci-containers.containers = {
-      pg_admin = {
+      kafka_admin = {
         image = "provectuslabs/kafka-ui";
         extraOptions = [ "--network=host" ];
         environment = {
