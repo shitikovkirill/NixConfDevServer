@@ -2,12 +2,10 @@
 
 {
   imports = [
-    ./prometheus
+    ./monitoring/prometheus
     ./mail
-    ./jupyter
-    ./rabbitmq
-    ./postgres
-    ./redis
-    ./gitlab
+    ./queve/rabbitmq
+    ./databases/postgres
+    ./databases/redis
   ];
 }
