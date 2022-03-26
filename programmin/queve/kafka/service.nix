@@ -44,7 +44,7 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 9092 ];
+        allowedTCPPorts = [ 9092 2181 ];
       };
     };
 
@@ -85,7 +85,7 @@ in {
         image = "provectuslabs/kafka-ui";
         extraOptions = [ "--network=host" ];
         environment = {
-          KAFKA_CLUSTERS_0_NAME = "local";
+          KAFKA_CLUSTERS_0_NAME = cfg.domain;
           KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "${cfg.domain}:9092";
           SERVER_PORT = "8082";
         };
