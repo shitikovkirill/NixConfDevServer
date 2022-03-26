@@ -44,7 +44,7 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 9092 2181 ];
+        allowedTCPPorts = [ 9092 ];
       };
     };
 
