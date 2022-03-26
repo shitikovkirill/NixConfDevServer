@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.devKafka;
+let
+  cfg = config.services.devKafka;
+  kafka_domain = "localhost";
 in {
   options = {
     services.devKafka = {
@@ -44,7 +46,7 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 9092 2181 ];
+        allowedTCPPorts = [ 9092 ];
       };
     };
 
@@ -75,8 +77,8 @@ in {
     };
 
     services.apache-kafka = {
-        enable = true;
-        hostname = cfg.domain;
+      enable = true;
+      hostname = kafka_domain;
     };
     services.zookeeper.enable = true;
 
@@ -85,8 +87,8 @@ in {
         image = "provectuslabs/kafka-ui";
         extraOptions = [ "--network=host" ];
         environment = {
-          KAFKA_CLUSTERS_0_NAME = cfg.domain;
-          KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "${cfg.domain}:9092";
+          KAFKA_CLUSTERS_0_NAME = kafka_domain;
+          KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "${kafka_domain}:9092";
           SERVER_PORT = "8082";
         };
       };

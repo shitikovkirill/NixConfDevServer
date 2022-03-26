@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.services.devGitLab;
-registry-ssl-path = "/var/lib/docker-registry-ssl";
+let
+  cfg = config.services.devGitLab;
+  registry-ssl-path = "/var/lib/docker-registry-ssl";
 in {
   options = {
     services.devGitLab = {
@@ -143,16 +144,17 @@ in {
       };
     };
 
-    systemd.tmpfiles.rules =
-      [ "d '${registry-ssl-path}' 0750 ${config.services.gitlab.user} ${config.services.gitlab.group} - -" ];
+    systemd.tmpfiles.rules = [
+      "d '${registry-ssl-path}' 0750 ${config.services.gitlab.user} ${config.services.gitlab.group} - -"
+    ];
 
     systemd.services.docker-registry-ssl = {
       description = "Create keys for docker registry";
       wantedBy = [ "multi-user.target" ];
       after = [
-          "systemd-tmpfiles-clean.service"
-          "systemd-tmpfiles-setup.service"
-          "systemd-tmpfiles-setup-dev.service"
+        "systemd-tmpfiles-clean.service"
+        "systemd-tmpfiles-setup.service"
+        "systemd-tmpfiles-setup-dev.service"
       ];
       script = ''
         FILE=client.cert
