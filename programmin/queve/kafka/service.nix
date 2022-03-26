@@ -44,7 +44,7 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 9092 2181 ];
+        allowedTCPPorts = [ 9092 ];
       };
     };
 
@@ -86,7 +86,7 @@ in {
         extraOptions = [ "--network=host" ];
         environment = {
           KAFKA_CLUSTERS_0_NAME = "local";
-          KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "localhost:9092";
+          KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "${cfg.domain}:9092";
           SERVER_PORT = "8082";
         };
       };
