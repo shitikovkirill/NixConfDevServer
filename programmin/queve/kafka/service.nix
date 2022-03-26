@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.services.devKafka;
-  kafka_domain = "localhost";
+  kafka_domain = cfg.domain;
 in {
   options = {
     services.devKafka = {
@@ -46,7 +46,7 @@ in {
     networking = {
       firewall = {
         enable = true;
-        allowedTCPPorts = [ 9092 2181 ];
+        allowedTCPPorts = [ 9092 ];
       };
     };
 
@@ -78,6 +78,7 @@ in {
 
     services.apache-kafka = {
       enable = true;
+      hostname = kafka_domain;
     };
     services.zookeeper.enable = true;
 
