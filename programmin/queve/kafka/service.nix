@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.services.devKafka;
-  kafka_domain = cfg.domain;
+  kafka_domain = "localhost";
 in {
   options = {
     services.devKafka = {
