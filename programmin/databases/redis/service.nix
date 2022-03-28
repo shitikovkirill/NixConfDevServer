@@ -60,6 +60,9 @@ in {
       upstreams = {
         "redis_admin_server" = { servers = { "127.0.0.1:4567" = { }; }; };
       };
+      upstreams = {
+        "flover_admin_server" = { servers = { "127.0.0.1:5555" = { }; }; };
+      };
 
       virtualHosts = {
         "${cfg.domain}" = {
@@ -73,6 +76,13 @@ in {
                 proxy_set_header "Host" "$host";
               '';
               proxyPass = "http://redis_admin_server";
+            };
+            "/flover/" = {
+              extraConfig = ''
+                proxy_set_header "X-Real-Ip" "$remote_addr";
+                proxy_set_header "Host" "$host";
+              '';
+              proxyPass = "http://flover_admin_server/";
             };
           };
         };
@@ -88,6 +98,10 @@ in {
     virtualisation.oci-containers.containers = {
       redis_admin = {
         image = "vieux/redmon";
+        extraOptions = [ "--network=host" ];
+      };
+      flower_admin = {
+        image = "mher/flower";
         extraOptions = [ "--network=host" ];
       };
     };
