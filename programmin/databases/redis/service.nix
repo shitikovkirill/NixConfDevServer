@@ -88,10 +88,6 @@ in {
           basicAuth = cfg.auth;
           locations = {
             "/" = {
-              extraConfig = ''
-                proxy_set_header "X-Real-Ip" "$remote_addr";
-                proxy_set_header "Host" "$host";
-              '';
               proxyPass = "http://key_admin_server";
             };
           };
