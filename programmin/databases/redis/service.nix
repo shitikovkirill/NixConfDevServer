@@ -61,6 +61,9 @@ in {
         "redis_admin_server" = { servers = { "127.0.0.1:4567" = { }; }; };
       };
       upstreams = {
+        "key_admin_server" = { servers = { "127.0.0.1:5001" = { }; }; };
+      };
+      upstreams = {
         "flower_admin_server" = { servers = { "127.0.0.1:5555" = { }; }; };
       };
 
@@ -76,6 +79,20 @@ in {
                 proxy_set_header "Host" "$host";
               '';
               proxyPass = "http://redis_admin_server";
+            };
+          };
+        };
+        "key.${cfg.domain}" = {
+          enableACME = cfg.https;
+          forceSSL = cfg.https;
+          basicAuth = cfg.auth;
+          locations = {
+            "/" = {
+              extraConfig = ''
+                proxy_set_header "X-Real-Ip" "$remote_addr";
+                proxy_set_header "Host" "$host";
+              '';
+              proxyPass = "http://key_admin_server";
             };
           };
         };
@@ -105,6 +122,10 @@ in {
     virtualisation.oci-containers.containers = {
       redis_admin = {
         image = "vieux/redmon";
+        extraOptions = [ "--network=host" ];
+      };
+      key_redis_admin = {
+        image = "marian/rebrow";
         extraOptions = [ "--network=host" ];
       };
       flower_admin = {
