@@ -61,7 +61,7 @@ in {
         "redis_admin_server" = { servers = { "127.0.0.1:4567" = { }; }; };
       };
       upstreams = {
-        "flover_admin_server" = { servers = { "127.0.0.1:5555" = { }; }; };
+        "flower_admin_server" = { servers = { "127.0.0.1:5555" = { }; }; };
       };
 
       virtualHosts = {
@@ -77,12 +77,19 @@ in {
               '';
               proxyPass = "http://redis_admin_server";
             };
-            "/flover/" = {
+          };
+        };
+        "flower.${cfg.domain}" = {
+          enableACME = cfg.https;
+          forceSSL = cfg.https;
+          basicAuth = cfg.auth;
+          locations = {
+            "/" = {
               extraConfig = ''
                 proxy_set_header "X-Real-Ip" "$remote_addr";
                 proxy_set_header "Host" "$host";
               '';
-              proxyPass = "http://flover_admin_server/";
+              proxyPass = "http://flower_admin_server";
             };
           };
         };
