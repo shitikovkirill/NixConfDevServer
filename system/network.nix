@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 let hosts = import ./load-hosts.nix;
 in {
-  services.openssh = { enable = true; };
+  services.openssh = { 
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
   networking = {
     hostName = "dev";
     firewall = {
